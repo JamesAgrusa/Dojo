@@ -1,3 +1,7 @@
+// here i wrote a code to have the user enter a number between 0 and 9
+// the program will then take the numerical value and output the number in a 
+// letter format
+
 #include <string>
 #include <iostream>
 
