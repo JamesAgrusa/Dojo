@@ -1,32 +1,5 @@
 #include "raylib.h"
 
-struct AnimData
-{
-    Rectangle rec;
-    Vector2 pos;
-    int frame;
-    float updateTime;
-    float runningTime;
-};
-
-AnimData updateAnimData(AnimData data, float deltaTime, int maxFrame)
-{
-    // update running time
-    data.runningTime += deltaTime;
-    if (data.runningTime >= data.updateTime)
-    {
-        data.runningTime = 0.0;
-        // update animation frame
-        data.rec.x = data.frame * data.rec.width;
-        data.frame++;
-        if (data.frame > maxFrame)
-        {
-            data.frame = 0;
-        }
-    }
-    return data;
-}
-
 int main()
 {
     int windowDimensions[2];
@@ -57,25 +30,8 @@ int main()
 
     // axe 3
     int axe2_x{1100};
-    int axe2_y{50};
-    int axe2_length{100};
-
-    const int sizeOfAxe{2};
-    AnimData sharp[sizeOfAxe]{};
-
-    for (int i = 0; i < sizeOfAxe; i++)
-    {
-        sharp[i].rec.x = 0.0;
-        sharp[i].rec.y = 0.0;
-        sharp[i].rec.width = shape.width/8;
-        sharp[i].rec.height = shape.height/8;
-        sharp[i].pos.y = windowDimensions[1] - shape.height/8;
-        sharp[i].frame = 0;
-        sharp[i].updateTime = 0.0;
-
-        sharp[i].pos.x =  windowDimensions[0] + i * 300;
-    }
-
+    int axe2_y{200};
+    int axe2_length{50};
 
     int direction{10};
 
@@ -103,6 +59,13 @@ int main()
                 direction = -direction; 
             }
 
+        // bounce of axe 3
+        axe2_y += direction;
+        if(axe2_y > height || axe2_y < 100)
+            {
+                direction = -direction; 
+            }
+
         if (IsKeyDown(KEY_D) && shape_x < 1400)
         {
             shape_x = shape_x + 10;
@@ -119,21 +82,6 @@ int main()
         {
             shape_y = shape_y - 10;
         }
-
-        for (int i = 0; i < sizeOfAxe; i++)
-        {
-            sharp[i] = updateAnimData(sharp[i], dT, 7);
-        }
-
-        for (AnimData sharp : sharp)
-        {
-             float pad{50};
-            Rectangle sharpRec{
-                sharp.pos.x + pad,
-                sharp.pos.y + pad,
-                sharp.rec.width - 2*pad,
-                sharp.rec.height - 2*pad
-            };
 
         EndDrawing();
     };
