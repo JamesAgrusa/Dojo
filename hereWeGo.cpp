@@ -29,7 +29,7 @@ int main()
     int axe1_length{50};
 
     // axe 3
-    int axe2_x{1100};
+    int axe2_x{200};
     int axe2_y{200};
     int axe2_length{50};
 
@@ -61,7 +61,7 @@ int main()
 
         // bounce of axe 3
         axe2_x += direction;
-        if(axe2_x > width || axe2_x < 500)
+        if(axe2_x >= width || axe2_x =< 100)
             {
                 direction = -direction; 
             }
