@@ -60,8 +60,8 @@ int main()
             }
 
         // bounce of axe 3
-        axe2_y += direction;
-        if(axe2_y > height || axe2_y < 100)
+        axe2_x += direction;
+        if(axe2_x > width || axe2_x < 500)
             {
                 direction = -direction; 
             }
