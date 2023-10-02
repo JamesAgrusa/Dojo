@@ -50,15 +50,35 @@ int main()
     {
         BeginDrawing();
         ClearBackground(WHITE);
+        // trying to load the texture here
+        // needs work 
+        Texture2D background = LoadTexture("textures/hereWeGo.tmx");
+        Vector2 bg1Pos{bgx, 0.0};
+        DrawTextureEx(background, bg1Pos, 0.0, 2.0, WHITE);
+        Vector2 bg2Pos{bgx + background.width*2, 0.0};
+        DrawTextureEx(background, bg2Pos, 0.0, 2.0, WHITE);
+        // text to the map
         DrawText("This Game Is Fun!", 900, 150, 40, RED);
         DrawText("Good Luck and Enjoy!", 900, 250, 40, RED);
         DrawText("Dodge here ->", 10, 160, 15, RED);
+        // draw circle
         DrawCircle(circle_x, circle_y, 25, GREEN);
+        // draw axes
         DrawRectangle(axe_x, axe_y, axe_length, axe_length, BLUE);
         DrawRectangle(axe1_x, axe1_y, axe1_length, axe1_length, BLUE);
         DrawRectangle(axe2_x, axe2_y, axe2_length, axe2_length, BLUE);
         DrawRectangle(axe3_x, axe3_y, axe3_length, axe3_length, BLUE);
+
+        // We want to get this prize to win!
+        // We also need a lose condition
+        // I need to define a path to this prize
+        // I need to define collision conditions with the axes
+        // Print to the screen when the player collides with the prize
+        // Pring to the screen when the player collides with the axes
+        
         DrawRectangle(prize_x, prize_y, prize_length, prize_length, RED);
+
+        // here is the movement of the axes, dictating the path of our circle
 
         // axe above prize
         axe_y += direction;
@@ -108,5 +128,5 @@ int main()
 
         EndDrawing();
     };
-    
+    UnloadTexture(background);
 }
