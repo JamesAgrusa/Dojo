@@ -28,7 +28,7 @@ int main()
     int axe1_y{200};
     int axe1_length{50};
 
-    // axe pn right
+    // axe on right
     int axe2_x{900};
     int axe2_y{650};
     int axe2_length{50};
@@ -60,28 +60,28 @@ int main()
         DrawRectangle(axe3_x, axe3_y, axe3_length, axe3_length, BLUE);
         DrawRectangle(prize_x, prize_y, prize_length, prize_length, RED);
 
-        // bounce of axe 1
+        // axe above prize
         axe_y += direction;
         if(axe_y > height || axe_y < 250)
             {
                 direction = -direction; 
             }
             
-        //bounce of axe 2
+        // axe on left
         axe1_y += direction;
         if(axe1_y > height || axe1_y < 250)
             {
                 direction = -direction; 
             }
 
-        // bounce of axe 3
+        // axe on right
         axe2_x += direction;
         if(axe2_x > width || axe2_x < 75)
             {
                 direction = -direction; 
             }
 
-        // bounce of axe 4
+        // top left axe
 
         axe3_x += direction;
         if (axe3_x > width || axe_x < 100)
