@@ -41,15 +41,33 @@ int main()
     int axe1_y{200};
     int axe1_length{50};
 
+    int l_axe1_x{axe1_x};
+    int r_axe1_x{axe1_x + axe1_length};
+    int u_axe1_y{axe1_y};
+    int b_axe1_y{axe1_y + axe1_length};
+
+
     // axe on right
     int axe2_x{900};
     int axe2_y{650};
     int axe2_length{50};
 
+    int l_axe2_x{axe2_x};
+    int r_axe2_x{axe2_x + axe2_length};
+    int u_axe2_y{axe2_y};
+    int b_axe2_y{axe2_y + axe2_length};
+
+
     // top left axe
     int axe3_x{75};
     int axe3_y{150};
     int axe3_length{50};
+
+    int l_axe3_x{axe3_x};
+    int r_axe3_x{axe3_x + axe3_length};
+    int u_axe3_y{axe3_y};
+    int b_axe3_y{axe3_y + axe3_length};
+
 
     // prize
     int prize_x{1300};
@@ -71,6 +89,25 @@ int main()
                              (r_axe_x >= l_circle_x) && 
                              (l_axe_x <= r_circle_x);
 
+    bool collision_with_axe1 = 
+                             (b_axe1_y >= u_circle_y) && 
+                             (u_axe1_y <= b_circle_y) && 
+                             (r_axe1_x >= l_circle_x) && 
+                             (l_axe1_x <= r_circle_x);
+                             
+    bool collision_with_axe2 = 
+                             (b_axe2_y >= u_circle_y) && 
+                             (u_axe2_y <= b_circle_y) && 
+                             (r_axe2_x >= l_circle_x) && 
+                             (l_axe2_x <= r_circle_x);
+
+    bool collision_with_axe3 = 
+                             (b_axe3_y >= u_circle_y) && 
+                             (u_axe3_y <= b_circle_y) && 
+                             (r_axe3_x >= l_circle_x) && 
+                             (l_axe3_x <= r_circle_x);
+                                                                             
+
     // win condition
     bool collision_with_prize = 
                                 (b_prize_y >= u_circle_y) && 
@@ -84,15 +121,19 @@ int main()
         BeginDrawing();
         ClearBackground(WHITE);
 
-        if(collision_with_axe)
+        if(collision_with_prize)
         {
-            DrawText("You Lose!", 400, 200, 40, RED);
-            DrawText("Would You Like To Play Again?", 700, 600, 40, RED);
-            EndDrawing();
+             DrawText("You Win!", 400, 200, 40, RED);
         }
-        else if (collision_with_prize)
+        else if (collision_with_axe || 
+        collision_with_axe1 || 
+        collision_with_axe2 || 
+        collision_with_axe3)
         {
-            DrawText("You Win!", 400, 200, 40, RED);
+           
+            DrawText("You Lose!", 400, 200, 40, RED);
+            DrawText("Try Again!", 700, 500, 40, RED);
+            EndDrawing();
         }
         else
         {
@@ -106,6 +147,21 @@ int main()
             r_axe_x = axe_x + axe_length;
             u_axe_y = axe_y;
             b_axe_y = axe_y + axe_length;
+
+            l_axe1_x = axe1_x;
+            r_axe1_x = axe1_x + axe1_length;
+            u_axe1_y = axe1_y;
+            b_axe1_y = axe1_y + axe1_length;
+
+            l_axe2_x = axe2_x;
+            r_axe2_x = axe2_x + axe_length;
+            u_axe2_y = axe2_y;
+            b_axe2_y = axe2_y + axe_length;
+
+            l_axe3_x = axe3_x;
+            r_axe3_x = axe3_x + axe_length;
+            u_axe3_y = axe3_y;
+            b_axe3_y = axe3_y + axe_length;
 
             l_prize_x = prize_x;
             r_prize_x = prize_x + prize_length;
@@ -122,6 +178,27 @@ int main()
                              (u_axe_y <= b_circle_y) && 
                              (r_axe_x >= l_circle_x) && 
                              (l_axe_x <= r_circle_x);
+
+            collision_with_axe1 = 
+                             (b_axe1_y >= u_circle_y) && 
+                             (u_axe1_y <= b_circle_y) && 
+                             (r_axe1_x >= l_circle_x) && 
+                             (l_axe1_x <= r_circle_x);
+
+            collision_with_axe2 = 
+                             (b_axe2_y >= u_circle_y) && 
+                             (u_axe2_y <= b_circle_y) && 
+                             (r_axe2_x >= l_circle_x) && 
+                             (l_axe2_x <= r_circle_x);
+
+            collision_with_axe3 = 
+                             (b_axe3_y >= u_circle_y) && 
+                             (u_axe3_y <= b_circle_y) && 
+                             (r_axe3_x >= l_circle_x) && 
+                             (l_axe3_x <= r_circle_x);
+
+
+
 
             // text to the maps
         DrawText("This Game Is Fun!", 900, 150, 40, RED);
