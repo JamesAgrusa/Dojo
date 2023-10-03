@@ -231,21 +231,21 @@ int main()
 
         // axe above prize
         axe_y += direction;
-        if(axe_y > height || axe_y < 250)
+        if(axe_y > height || axe_y < 400)
             {
                 direction = -direction; 
             }
             
         // axe on left
         axe1_y += direction;
-        if(axe1_y > height || axe1_y < 250)
+        if(axe1_y > height || axe1_y < 400)
             {
                 direction = -direction; 
             }
 
         // axe on right
         axe2_x += direction;
-        if(axe2_x > width || axe2_x < 75)
+        if(axe2_x > width || axe2_x < 150)
             {
                 direction = -direction; 
             }
@@ -253,7 +253,7 @@ int main()
         // top left axe
 
         axe3_x += direction;
-        if (axe3_x > width || axe_x < 100)
+        if (axe3_x > width || axe_x < 150)
             {
                 direction = -direction;
             }
