@@ -17,6 +17,14 @@ int main()
 
     int circle_x{360};
     int circle_y{100};
+    int circle_radius{25};
+
+    // circle edges
+    int l_circle_x{circle_x - circle_radius};
+    int r_circle_x{circle_x + circle_radius};
+    int u_circle_y{circle_y - circle_radius};
+    int b_circle_y{circle_y + circle_radius};
+
 
     // axe on top of prize
     int axe_x{200};
@@ -43,21 +51,48 @@ int main()
     int prize_y{750};
     int prize_length{100};
 
+    // prize edges
+    int l_prize_x{prize_x};
+    int r_prize_x{prize_x + prize_length};
+    int u_prize_y{prize_y};
+    int b_prize_y{prize_y + prize_length};
+
     int direction{5};
 
+    bool collision_with_prize = 
+                                (b_prize_y >= u_circle_y) && 
+                                (u_prize_y <= b_circle_y) && 
+                                (r_prize_x >= l_circle_x) && 
+                                (l_prize_x <= r_circle_x);
+
     SetTargetFPS(60);
-    while (!WindowShouldClose())
+    while (WindowShouldClose() == false)
     {
         BeginDrawing();
         ClearBackground(WHITE);
-        // trying to load the texture here
-        // needs work 
-        Texture2D background = LoadTexture("textures/hereWeGo.tmx");
-        Vector2 bg1Pos{bgx, 0.0};
-        DrawTextureEx(background, bg1Pos, 0.0, 2.0, WHITE);
-        Vector2 bg2Pos{bgx + background.width*2, 0.0};
-        DrawTextureEx(background, bg2Pos, 0.0, 2.0, WHITE);
-        // text to the map
+        
+        if (collision_with_prize)
+        {
+            DrawText("You Win!", 400, 200, 40, RED);
+        }
+        else
+        {
+            l_circle_x = circle_x - circle_radius;
+            r_circle_x = circle_x + circle_radius;
+            u_circle_y = circle_y - circle_radius;
+            b_circle_y = circle_y + circle_radius;
+            l_prize_x = prize_x;
+            r_prize_x = prize_x + prize_length;
+            u_prize_y = prize_y;
+            b_prize_y = prize_y + prize_length;
+            // update collision_with_prize
+            collision_with_prize = 
+                             (b_prize_y >= u_circle_y) && 
+                             (u_prize_y <= b_circle_y) && 
+                             (r_prize_x >= l_circle_x) && 
+                             (l_prize_x <= r_circle_x);
+
+            // text to the maps
         DrawText("This Game Is Fun!", 900, 150, 40, RED);
         DrawText("Good Luck and Enjoy!", 900, 250, 40, RED);
         DrawText("Dodge here ->", 10, 160, 15, RED);
@@ -110,23 +145,25 @@ int main()
             }
 
         if (IsKeyDown(KEY_D) && circle_x < 1400)
-        {
-            circle_x = circle_x + 10;
-        }
+            {
+                circle_x = circle_x + 10;
+            }
         if (IsKeyDown(KEY_A) && circle_x > 0)
-        {
-            circle_x = circle_x - 10;
-        }
+            {
+                circle_x = circle_x - 10;
+            }
         if (IsKeyDown(KEY_S) && circle_y < 800)
-        {
-            circle_y = circle_y + 10;
-        }
+            {
+                circle_y = circle_y + 10;
+            }
         if (IsKeyDown(KEY_W) && circle_y > 0)
-        {
-            circle_y = circle_y - 10;
-        }
+            {
+                circle_y = circle_y - 10;
+            }
 
+        
+        }
         EndDrawing();
-    };
-    UnloadTexture(background);
+    }
+
 }
