@@ -80,7 +80,7 @@ int main()
     int u_prize_y{prize_y};
     int b_prize_y{prize_y + prize_length};
 
-    int direction{5};
+    int direction{10};
 
     // lose condition
     bool collision_with_axe = 
@@ -130,10 +130,8 @@ int main()
         collision_with_axe2 || 
         collision_with_axe3)
         {
-           
             DrawText("You Lose!", 400, 200, 40, RED);
-            DrawText("Try Again!", 700, 500, 40, RED);
-            EndDrawing();
+            DrawText("Will You Try Again?", 700, 200, 40, RED);
         }
         else
         {
@@ -231,21 +229,21 @@ int main()
 
         // axe above prize
         axe_y += direction;
-        if(axe_y > height || axe_y < 400)
+        if(axe_y > height || axe_y < 0)
             {
                 direction = -direction; 
             }
             
         // axe on left
         axe1_y += direction;
-        if(axe1_y > height || axe1_y < 400)
+        if(axe1_y > height || axe1_y < 0)
             {
                 direction = -direction; 
             }
 
         // axe on right
         axe2_x += direction;
-        if(axe2_x > width || axe2_x < 150)
+        if(axe2_x > width || axe2_x < 1400)
             {
                 direction = -direction; 
             }
@@ -253,7 +251,7 @@ int main()
         // top left axe
 
         axe3_x += direction;
-        if (axe3_x > width || axe_x < 150)
+        if (axe3_x > width || axe_x < 1400)
             {
                 direction = -direction;
             }
