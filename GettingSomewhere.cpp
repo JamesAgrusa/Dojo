@@ -1,5 +1,8 @@
 #include "raylib.h"
 
+
+bool WantToPlayAgain();
+
 int main()
 {
     int windowDimensions[2];
@@ -8,7 +11,6 @@ int main()
     
     InitWindow(windowDimensions[0], windowDimensions[1], "Here we go again!");
     
-
 
     int height{800};
     int width{1400};
@@ -26,10 +28,10 @@ int main()
     int b_circle_y{circle_y + circle_radius};
 
 
-    // axe on top of prize
-    int axe_x{200};
-    int axe_y{200};
-    int axe_length{50};
+    // axe on right
+    int axe_x{900};
+    int axe_y{600};
+    int axe_length{70};
 
     int l_axe_x{axe_x};
     int r_axe_x{axe_x + axe_length};
@@ -37,9 +39,9 @@ int main()
     int b_axe_y{axe_y + axe_length};
 
     // axe on left
-    int axe1_x{650};
-    int axe1_y{200};
-    int axe1_length{50};
+    int axe1_x{600};
+    int axe1_y{599};
+    int axe1_length{70};
 
     int l_axe1_x{axe1_x};
     int r_axe1_x{axe1_x + axe1_length};
@@ -47,10 +49,10 @@ int main()
     int b_axe1_y{axe1_y + axe1_length};
 
 
-    // axe on right
-    int axe2_x{900};
-    int axe2_y{650};
-    int axe2_length{50};
+    // axe above prize
+    int axe2_x{1000};
+    int axe2_y{600};
+    int axe2_length{70};
 
     int l_axe2_x{axe2_x};
     int r_axe2_x{axe2_x + axe2_length};
@@ -59,9 +61,9 @@ int main()
 
 
     // top left axe
-    int axe3_x{75};
+    int axe3_x{300};
     int axe3_y{150};
-    int axe3_length{50};
+    int axe3_length{70};
 
     int l_axe3_x{axe3_x};
     int r_axe3_x{axe3_x + axe3_length};
@@ -123,7 +125,7 @@ int main()
 
         if(collision_with_prize)
         {
-             DrawText("You Win!", 400, 200, 40, RED);
+             DrawText("You Win!", 600, 300, 40, RED);
         }
         else if (collision_with_axe || 
         collision_with_axe1 || 
@@ -198,52 +200,32 @@ int main()
 
 
 
-            // text to the maps
+        // text to the maps
         DrawText("This Game Is Fun!", 900, 100, 40, RED);
         DrawText("If you hit the rectangles you lose!", 650, 140, 40, RED);
         DrawText("If you get the prize you win!", 700, 180, 40, RED);
         DrawText("Good Luck and Enjoy!", 900, 220, 40, RED);
-        DrawText("Dodge here ->", 10, 160, 15, RED);
-        DrawText("Dodge here ->", 80, 270, 15, RED);
-        DrawText("Dodge here ->", 530, 308, 15, RED);
-        DrawText("Dodge here ->", 850, 670, 15, RED);
-        DrawText("Get Me!!!", 1110, 740, 40, BLACK);
-        // draw circle
-        DrawCircle(circle_x, circle_y, 25, GREEN);
-        // draw axes
-        DrawRectangle(axe_x, axe_y, axe_length, axe_length, BLUE);
-        DrawRectangle(axe1_x, axe1_y, axe1_length, axe1_length, BLUE);
-        DrawRectangle(axe2_x, axe2_y, axe2_length, axe2_length, BLUE);
-        DrawRectangle(axe3_x, axe3_y, axe3_length, axe3_length, BLUE);
+        DrawText("Get Me!!!", 1110, 740, 40, BLUE);
 
-        // We want to get this prize to win!
-        // We also need a lose condition
-        // I need to define a path to this prize
-        // I need to define collision conditions with the axes
-        // Print to the screen when the player collides with the prize
-        // Pring to the screen when the player collides with the axes
-        
+        // draw circle
+        DrawCircle(circle_x, circle_y, 25, BLACK);
+
+        // draw axes
+        DrawRectangle(axe_x, axe_y, axe_length, axe_length, BLACK);
+        DrawRectangle(axe1_x, axe1_y, axe1_length, axe1_length, BLACK);
+        DrawRectangle(axe1_x, axe1_y, axe1_length, axe1_length, BLACK);
+        DrawRectangle(axe2_x, axe2_y, axe2_length, axe2_length, BLACK);
+        DrawRectangle(axe3_x, axe3_y, axe3_length, axe3_length, BLACK);
+
         DrawRectangle(prize_x, prize_y, prize_length, prize_length, RED);
 
         // here is the movement of the axes, dictating the path of our circle
 
-        // axe above prize
-        axe_y += direction;
-        if(axe_y > height || axe_y < 0)
-            {
-                direction = -direction; 
-            }
-            
-        // axe on left
-        axe1_y += direction;
-        if(axe1_y > height || axe1_y < 0)
-            {
-                direction = -direction; 
-            }
+        
 
         // axe on right
         axe2_x += direction;
-        if(axe2_x > width || axe2_x < 1400)
+        if(axe2_x > width || axe2_x < 1000)
             {
                 direction = -direction; 
             }
@@ -251,7 +233,7 @@ int main()
         // top left axe
 
         axe3_x += direction;
-        if (axe3_x > width || axe_x < 1400)
+        if (axe3_x > width || axe_x < 200)
             {
                 direction = -direction;
             }
