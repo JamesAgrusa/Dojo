@@ -7,7 +7,7 @@ int main()
     const int windowHeight{384};
     InitWindow(windowWidth, windowHeight, "Another Top Down!");
 
-    Texture2D map = LoadTexture("nature_tileset/OpenWorldMap24x24.png");
+    Texture2D map = LoadTexture("map_tileset/TopDownMap.png");
     Vector2 mapPos{0.0, 0.0};
     float speed{4.0};
 
