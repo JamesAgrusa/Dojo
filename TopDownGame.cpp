@@ -13,6 +13,7 @@ int main()
 
     Texture2D knight_idle = LoadTexture("characters/knight_idle_spritesheet.png");
     Texture2D knight_run = LoadTexture("characters/knight_run_spritesheet.png");
+    
 
     Texture2D knight = LoadTexture("characters/knight_idle_spritesheet.png");
     Vector2 knightPos{
