@@ -8,7 +8,7 @@ BaseHero::BaseHero()
 
 void BaseHero::undowMovement()
 {
-    WorldPos = worldPosLastFrame;
+    worldPos = worldPosLastFrame;
 }
 
 void BaseHero::tick(float deltaTime)
