@@ -1,6 +1,5 @@
 #include "raylib.h"
 #include "raymath.h"
-#include "BaseHero.h"
 #include "Hero.h"
 
 int main()
@@ -26,6 +25,16 @@ int main()
         // draw the map
         DrawTextureEx(map, mapPos, 0.0, 4.0, WHITE);
 
+        knight.tick(GetFrameTime());
+        // check map bounds
+        if(knight.getWorldPos().x < 0.f ||
+           knight.getWorldPos().y < 0.f ||
+           knight.getWorldPos().x + windowWidth > map.width * mapScale ||
+           knight.getWorldPos().y + windowHeight > map.height * mapScale)
+        {
+            knight.undoMovement();
+        }
+        
         EndDrawing();
     }
      CloseWindow();
