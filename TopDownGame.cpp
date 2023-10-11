@@ -9,7 +9,7 @@ int main()
 
     Texture2D map = LoadTexture("map_tileset/TopDownMap.png");
     Vector2 mapPos{0.0, 0.0};
-    float speed{4.0};
+    float speed{6.0};
 
     Texture2D knight_idle = LoadTexture("characters/knight_idle_spritesheet.png");
     Texture2D knight_run = LoadTexture("characters/knight_run_spritesheet.png");
@@ -66,7 +66,7 @@ int main()
 
         // draw the character
         Rectangle source{frame * (float)knight.width/6.f, 0.f, rightLeft * (float)knight.width/6.f, (float)knight.height};
-        Rectangle dest{knightPos.x, knightPos.y, 4.0f * (float)knight.width/6.0f, 4.0f * (float)knight.height};
+        Rectangle dest{knightPos.x, knightPos.y, 8.0f * (float)knight.width/6.0f, 8.0f * (float)knight.height};
         DrawTexturePro(knight, source, dest, Vector2{}, 0.f, WHITE);
 
         EndDrawing();
