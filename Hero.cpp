@@ -1,4 +1,4 @@
-#include "raylib.h"
+#include "raymath.h"
 #include "Hero.h"
 
 Hero::Hero(int winWidth, int winHeight) :
@@ -27,4 +27,5 @@ void Hero::tick(float deltaTime)
         velocity.y -= 1.0;
     if (IsKeyDown(KEY_S))
         velocity.y += 1.0;
+    BaseHero::tick(deltaTime);
 }
