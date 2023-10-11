@@ -9,7 +9,7 @@ class BaseHero
     Vector2 getWorldPos() { return worldPos; }
     void undowMovement();
     virtual void tick(float deltaTime);
-    virtual void Vector2 getScreenPos() = 0;
+    virtual Vector2 getScreenPos() = 0;
 
     protected:
     Texture2D texture{LoadTexture("characters/knight_idle_spritesheet.png")};
@@ -31,6 +31,6 @@ class BaseHero
     Vector2 velocity{};
 
     private:
-}
+};
 
 #endif
