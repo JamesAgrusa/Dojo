@@ -1,17 +1,18 @@
 #ifndef BASE_HERO_H
 #define BASE_HERO_H
 #include "raylib.h"
-
-class BaseHero
+class BaseCharacter
 {
-    public:
-    BaseHero();
+public:
+    BaseCharacter();
     Vector2 getWorldPos() { return worldPos; }
-    void undowMovement();
+    void undoMovement();
+    Rectangle getCollisionRec();
     virtual void tick(float deltaTime);
     virtual Vector2 getScreenPos() = 0;
-
-    protected:
+    bool getAlive() { return alive; }
+    void setAlive(bool isAlive) { alive = isAlive; }
+protected:
     Texture2D texture{LoadTexture("characters/knight_idle_spritesheet.png")};
     Texture2D idle{LoadTexture("characters/knight_idle_spritesheet.png")};
     Texture2D run{LoadTexture("characters/knight_run_spritesheet.png")};
@@ -29,8 +30,8 @@ class BaseHero
     float height{};
     float scale{4.0f};
     Vector2 velocity{};
-
-    private:
+private: 
+    bool alive{true};
 };
 
 #endif
