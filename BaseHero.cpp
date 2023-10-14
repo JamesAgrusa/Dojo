@@ -1,32 +1,44 @@
 #include "BaseHero.h"
 #include "raymath.h"
 
-BaseHero::BaseHero()
+BaseCharacter::BaseCharacter()
 {
-
+    
 }
 
-void BaseHero::undowMovement()
+void BaseCharacter::undoMovement()
 {
     worldPos = worldPosLastFrame;
 }
 
-void BaseHero::tick(float deltaTime)
+Rectangle BaseCharacter::getCollisionRec()
+{
+    return Rectangle{
+        getScreenPos().x,
+        getScreenPos().y,
+        width * scale,
+        height * scale
+    };
+}
+
+void BaseCharacter::tick(float deltaTime)
 {
     worldPosLastFrame = worldPos;
 
     // update animation frame
     runningTime += deltaTime;
-    if(runningTime >= updateTime)
+    if (runningTime >= updateTime)
     {
         frame++;
         runningTime = 0.f;
-        if(frame > maxFrames)
-        frame = 0;
+        if (frame > maxFrames)
+            frame = 0;
     }
 
     if (Vector2Length(velocity) != 0.0)
     {
+        // set worldPos = worldPos + velocity
+
         worldPos = Vector2Add(worldPos, Vector2Scale(Vector2Normalize(velocity), speed));
         velocity.x < 0.f ? rightLeft = -1.f : rightLeft = 1.f;
         texture = run;
@@ -36,7 +48,7 @@ void BaseHero::tick(float deltaTime)
         texture = idle;
     }
     velocity = {};
-    
+
     // draw the character
     Rectangle source{frame * width, 0.f, rightLeft * width, height};
     Rectangle dest{getScreenPos().x, getScreenPos().y, scale * width, scale * height};
