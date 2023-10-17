@@ -16,8 +16,8 @@ int main()
 
     Texture2D knight = LoadTexture("newcharacterpack/soldier.png");
     Vector2 knightPos{
-        (float)windowWidth/6.0f - 3.5f * (0.5f * (float)knight.width/4.0f), // c style cast. turning width 'int' into a 'float'
-        (float)windowHeight/6.0f - 3.5f *  (0.5f * (float)knight.height/2)
+        (float)windowWidth/2.0f - 4.0f * (0.5f * (float)knight.width/4.0f), // c style cast. turning width 'int' into a 'float'
+        (float)windowHeight/2.0f - 4.0f *  (0.5f * (float)knight.height)
     };
 
     float rightLeft{1.f};
@@ -44,11 +44,12 @@ int main()
             // set mapPos = mapPos - direction
             
             mapPos = Vector2Subtract(mapPos, Vector2Scale(Vector2Normalize(direction), speed));
-            
-        }
+
+        }   
+        
         
         // draw the map
-        DrawTextureEx(map, mapPos, 0.0, 4.0, WHITE);
+        DrawTextureEx(map, mapPos, 0.0, 1.0, WHITE);
 
         // update animation frame
         runningTime += GetFrameTime();
@@ -60,9 +61,9 @@ int main()
         }
 
         // draw the character
-        Rectangle source{1.f, 1.f, (float)knight.width/1.0f, (float)knight.height/4.0f};
-        Rectangle dest{knightPos.x, knightPos.y, 5.0f * (float)knight.width/1.0f, 5.0f * (float)knight.height/4.0f};
-        DrawTexturePro(knight, source, dest, Vector2{}, -1.0f, WHITE);
+        Rectangle source{frame * (float)knight.width/4.f, 1.f, rightLeft * (float)knight.width/4.f, (float)knight.height/4};
+        Rectangle dest{knightPos.x, knightPos.y, 4.0f * (float)knight.width/4.0f, 4.0f * (float)knight.height/4};
+        DrawTexturePro(knight, source, dest, Vector2{}, 1.f, WHITE);
 
         EndDrawing();
     }
