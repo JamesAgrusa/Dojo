@@ -1,6 +1,7 @@
 #include "raylib.h"
 #include "raymath.h"
 
+
 int main()
 {
     const int windowWidth{1500};
@@ -12,9 +13,9 @@ int main()
     float speed{6.0};
 
     
-    Texture2D knight_run = LoadTexture("newcharacterspack/solider.png");
+    Texture2D knight_run = LoadTexture("newcharacterspack/solider_idle.png");
 
-    Texture2D knight = LoadTexture("newcharacterpack/soldier.png");
+    Texture2D knight = LoadTexture("newcharacterpack/soldier_idle.png");
     Vector2 knightPos{
         (float)windowWidth/2.0f - 4.0f * (0.5f * (float)knight.width/4.0f), // c style cast. turning width 'int' into a 'float'
         (float)windowHeight/2.0f - 4.0f *  (0.5f * (float)knight.height)
@@ -24,7 +25,7 @@ int main()
     float runningTime{};
     int frame{};
     const int maxFrames{4};
-    const float updateTime{1.f/12.f};
+    const float updateTime{1.f/6.f};
 
 
     SetTargetFPS(60);
@@ -59,13 +60,22 @@ int main()
             runningTime = 0.f;
             if(frame > maxFrames) frame = 0;
         }
+        else
+        {
+           
+        }
+        // character direction
+        
 
         // draw the character
-        Rectangle source{frame * (float)knight.width/4.f, 1.f, rightLeft * (float)knight.width/4.f, (float)knight.height/4};
-        Rectangle dest{knightPos.x, knightPos.y, 4.0f * (float)knight.width/4.0f, 4.0f * (float)knight.height/4};
+        Rectangle source{frame * (float)knight.width/4.f, 1.f, rightLeft * (float)knight.width/4.f, (float)knight.height};
+        Rectangle dest{knightPos.x, knightPos.y, 4.0f * (float)knight.width/4.0f, 4.0f * (float)knight.height};
         DrawTexturePro(knight, source, dest, Vector2{}, 1.f, WHITE);
+       
 
         EndDrawing();
     }
      CloseWindow();
 }
+
+
