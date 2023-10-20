@@ -13,12 +13,12 @@ int main()
     float speed{6.0};
 
     
-    Texture2D knight_run = LoadTexture("newcharacterspack/solider_idle.png");
+    Texture2D solider_idle = LoadTexture("newcharacterspack/solider_idle.png");
 
-    Texture2D knight = LoadTexture("newcharacterpack/soldier_idle.png");
-    Vector2 knightPos{
-        (float)windowWidth/2.0f - 4.0f * (0.5f * (float)knight.width/4.0f), // c style cast. turning width 'int' into a 'float'
-        (float)windowHeight/2.0f - 4.0f *  (0.5f * (float)knight.height)
+    Texture2D solider = LoadTexture("newcharacterpack/soldier_idle.png");
+    Vector2 soliderPos{
+        (float)windowWidth/2.0f - 4.0f * (0.5f * (float)solider.width/4.0f), // c style cast. turning width 'int' into a 'float'
+        (float)windowHeight/2.0f - 4.0f *  (0.5f * (float)solider.height)
     };
 
     float rightLeft{1.f};
@@ -68,14 +68,13 @@ int main()
         
 
         // draw the character
-        Rectangle source{frame * (float)knight.width/4.f, 1.f, rightLeft * (float)knight.width/4.f, (float)knight.height};
-        Rectangle dest{knightPos.x, knightPos.y, 4.0f * (float)knight.width/4.0f, 4.0f * (float)knight.height};
-        DrawTexturePro(knight, source, dest, Vector2{}, 1.f, WHITE);
+        Rectangle source{frame * (float)solider.width/4.f, 1.f, rightLeft * (float)solider.width/4.f, (float)solider.height};
+        Rectangle dest{soliderPos.x, soliderPos.y, 4.0f * (float)solider.width/4.0f, 4.0f * (float)solider.height};
+        DrawTexturePro(solider, source, dest, Vector2{}, 1.f, WHITE);
        
 
         EndDrawing();
     }
      CloseWindow();
 }
-
 
