@@ -57,7 +57,9 @@ int main()
         DrawTextureEx(map, mapPos, 0.0, 1.0, WHITE);
 
         float deltaTime;
-
+        // maybe add a do while loop for when key is not pressed for idle
+        //then when key is pressed allow the solider to run animate
+        //you got this <3
         // update animation frame
         runningTime += deltaTime;
         if (runningTime >= updateTime)
@@ -69,7 +71,6 @@ int main()
         
         if (Vector2Length(velocity) != 0.0)
         {
-            
             worldPos = Vector2Add(worldPos, Vector2Scale(Vector2Normalize(velocity), speed));
             velocity.x < 0.f ? rightLeft = -1.f : rightLeft = 1.f;      
         }
