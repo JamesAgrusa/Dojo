@@ -14,6 +14,7 @@ int main()
 
     
     Texture2D solider_idle = LoadTexture("newcharacterspack/solider_idle.png");
+    Texture2D solider_run = LoadTexture("newcharacterspack/solider_run.png ");
     
 
     Texture2D solider = LoadTexture("newcharacterpack/soldier_idle.png");
