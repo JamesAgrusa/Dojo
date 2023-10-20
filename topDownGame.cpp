@@ -14,6 +14,7 @@ int main()
 
     
     Texture2D solider_idle = LoadTexture("newcharacterspack/solider_idle.png");
+    
 
     Texture2D solider = LoadTexture("newcharacterpack/soldier_idle.png");
     Vector2 soliderPos{
@@ -26,13 +27,15 @@ int main()
     int frame{};
     const int maxFrames{4};
     const float updateTime{1.f/6.f};
+    Vector2 velocity = {};
+    Vector2 worldPos{};
 
 
     SetTargetFPS(60);
     while (!WindowShouldClose())
     {
         BeginDrawing();
-        ClearBackground(BLUE);
+        ClearBackground(WHITE);
 
         
         Vector2 direction{};
@@ -52,24 +55,27 @@ int main()
         // draw the map
         DrawTextureEx(map, mapPos, 0.0, 1.0, WHITE);
 
+        float deltaTime;
+
         // update animation frame
-        runningTime += GetFrameTime();
+        runningTime += deltaTime;
         if (runningTime >= updateTime)
         {
             frame++;
             runningTime = 0.f;
             if(frame > maxFrames) frame = 0;
         }
-        else
-        {
-           
-        }
-        // character direction
         
-
+        if (Vector2Length(velocity) != 0.0)
+        {
+            
+            worldPos = Vector2Add(worldPos, Vector2Scale(Vector2Normalize(velocity), speed));
+            velocity.x < 0.f ? rightLeft = -1.f : rightLeft = 1.f;      
+        }
+     
         // draw the character
-        Rectangle source{frame * (float)solider.width/4.f, 1.f, rightLeft * (float)solider.width/4.f, (float)solider.height};
-        Rectangle dest{soliderPos.x, soliderPos.y, 4.0f * (float)solider.width/4.0f, 4.0f * (float)solider.height};
+        Rectangle source{frame * (float)solider.width/1.f, 1.f, rightLeft * (float)solider.width/1.f, (float)solider.height};
+        Rectangle dest{soliderPos.x, soliderPos.y, 4.0f * (float)solider.width/1.0f, 4.0f * (float)solider.height};
         DrawTexturePro(solider, source, dest, Vector2{}, 1.f, WHITE);
        
 
