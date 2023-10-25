@@ -3,27 +3,35 @@
 
 int main()
 {
-    const int windowWidth{1500};
-    const int windowHeight{800};
-    InitWindow(windowWidth, windowHeight, "The Top Down");
+    const int windowWidth{384};
+    const int windowHeight{384};
+    InitWindow(windowWidth, windowHeight, "Another Top Down");
 
-    Texture2D map = LoadTexture("nature_tileset/Map.png");
+    Texture2D map = LoadTexture("nature_tileset/OpenWorldMap24x24.png");
     Vector2 mapPos{0.0, 0.0};
-    float speed{8.0};
+    float speed{4.0};
 
-    Texture2D knight = LoadTexture("newcharacterpack/soldier.png");
-    Vector2 knightPos{
-        (float)windowWidth/6.0f - 1.5f * (0.5f * (float)knight.width/4.0f), // c style cast. turning width 'int' into a 'float'
-        (float)windowHeight/6.0f - 1.5f *  (0.5f * (float)knight.height/2)
+    Texture2D soldier_idle = LoadTexture("newcharacters/soldier_idle.png");
+    Texture2D soldier_run = LoadTexture("newcharacters/soldier_walk.png");
+    Texture2D soldier = LoadTexture("newcharacters/soldier_idle.png");
+    Vector2 soldierPos{
+        (float)windowWidth/2.0f - 4.0f * (0.5f * (float)soldier.width/4.0f),
+        (float)windowHeight/2.0f - 4.0f * (0.5f * (float)soldier.height)
     };
+    // 1 : facing right, -1 : facing left
+    float rightLeft{1.f};
+    // animation variables
+    float runningTime{};
+    int frame{};
+    const int maxFrames{4};
+    const float updateTime{1.f/9.f};
 
     SetTargetFPS(60);
     while (!WindowShouldClose())
     {
         BeginDrawing();
-        ClearBackground(BLUE);
+        ClearBackground(WHITE);
 
-        
         Vector2 direction{};
         if (IsKeyDown(KEY_A)) direction.x -= 1.0;
         if (IsKeyDown(KEY_D)) direction.x += 1.0;
@@ -34,17 +42,33 @@ int main()
             // set mapPos = mapPos - direction
             
             mapPos = Vector2Subtract(mapPos, Vector2Scale(Vector2Normalize(direction), speed));
+            direction.x < 0.f ? rightLeft = -1.f : rightLeft = 1.f;
+            soldier = soldier_run;
+        }
+        else
+        {
+            soldier = soldier_idle;
         }
         
         // draw the map
         DrawTextureEx(map, mapPos, 0.0, 4.0, WHITE);
 
-        // draw the character
-        Rectangle source{1.f, 1.f, (float)knight.width/4.0f, (float)knight.height/5.0f};
-        Rectangle dest{knightPos.x, knightPos.y, 4.0f * (float)knight.width/4.0f, 4.0f * (float)knight.height/5.0f};
-        DrawTexturePro(knight, source, dest, Vector2{}, -1.0f, WHITE);
+        // update animation frame
+        runningTime += GetFrameTime();
+        if (runningTime >= updateTime)
+        {
+            frame++;
+            runningTime = 0.f;
+            if (frame > maxFrames) frame = 0;
+        }
+
+        // draw the character walking
+       
+        Rectangle source{frame * (float)soldier.width/4.f, 0.f, rightLeft * (float)soldier.width/4.f, (float)soldier.height};
+        Rectangle dest{soldierPos.x, soldierPos.y, 4.0f * (float)soldier.width/4.0f, 4.0f * (float)soldier.height};
+        DrawTexturePro(soldier, source, dest, Vector2{}, 0.f, WHITE);
 
         EndDrawing();
     }
-     CloseWindow();
+    CloseWindow();
 }
