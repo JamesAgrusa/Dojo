@@ -11,9 +11,11 @@ int main()
     Vector2 mapPos{0.0, 0.0};
     float speed{4.0};
 
-    Texture2D soldier_idle = LoadTexture("newcharacters/soldier_idle.png");
+    Texture2D axe{LoadTexture("Weapons/Axe/Axe.png")};
+    
+    
     Texture2D soldier_walk = LoadTexture("newcharacters/soldier_walk.png");
-    Texture2D soldier = LoadTexture("newcharacters/soldier_idle.png");
+    Texture2D soldier = LoadTexture("newcharacters/soldier_walk.png");
     Vector2 soldierPos{
         (float)windowWidth/2.0f - 4.0f * (0.5f * (float)soldier.width/4.0f),
         (float)windowHeight/2.0f - 4.0f * (0.5f * (float)soldier.height)
@@ -26,6 +28,7 @@ int main()
     int frame{};
     const int maxFrames{4};
     const float updateTime{1.f/10.f};
+    float scale{4.0f};
 
     SetTargetFPS(60);
     while (!WindowShouldClose())
@@ -33,11 +36,12 @@ int main()
         BeginDrawing();
         ClearBackground(WHITE);
 
+        
         Vector2 direction{};
         if (IsKeyDown(KEY_A)) direction.x -= 1.0;
         if (IsKeyDown(KEY_D)) direction.x += 1.0;
-        if (IsKeyDown(KEY_W)) direction.y -= 1.0;
-        if (IsKeyDown(KEY_S)) direction.y += 1.0;
+        // if (IsKeyDown(KEY_W)) direction.y -= 1.0;
+        // if (IsKeyDown(KEY_S)) direction.y += 1.0;
         if (Vector2Length(direction) != 0.0)
         {
             // set mapPos = mapPos - direction
@@ -73,6 +77,13 @@ int main()
         Rectangle source{frame * (float)soldier.width/4.f, 0.f, rightLeft * (float)soldier.width/4.f, (float)soldier.height};
         Rectangle dest{soldierPos.x, soldierPos.y, 3.0f * (float)soldier.width/4.0f, 3.0f * (float)soldier.height};
         DrawTexturePro(soldier, source, dest, Vector2{}, 0.f, WHITE);
+
+        
+        // draw the axe
+
+        Rectangle source1{0.f, 0.f, static_cast<float>(axe.width) * rightLeft, static_cast<float>(axe.height)};
+        Rectangle dest1{soldierPos.x, soldierPos.y, axe.width * scale, axe.height * scale};
+        DrawTexturePro(axe, source1, dest1, {}, 0.f, WHITE);
 
         EndDrawing();
     }
