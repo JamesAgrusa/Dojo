@@ -40,8 +40,8 @@ int main()
         Vector2 direction{};
         if (IsKeyDown(KEY_A)) direction.x -= 1.0;
         if (IsKeyDown(KEY_D)) direction.x += 1.0;
-        // if (IsKeyDown(KEY_W)) direction.y -= 1.0;
-        // if (IsKeyDown(KEY_S)) direction.y += 1.0;
+        if (IsKeyDown(KEY_W)) direction.y -= 1.0;
+        if (IsKeyDown(KEY_S)) direction.y += 1.0;
         if (Vector2Length(direction) != 0.0)
         {
             // set mapPos = mapPos - direction
