@@ -82,7 +82,7 @@ int main()
         // draw the axe
 
         Rectangle source1{0.f, 0.f, static_cast<float>(axe.width) * rightLeft, static_cast<float>(axe.height)};
-        Rectangle dest1{soldierPos.x, soldierPos.y, axe.width * scale, axe.height * scale};
+        Rectangle dest1{soldierPos.x - 3, soldierPos.y + 13, axe.width * scale, axe.height * scale};
         DrawTexturePro(axe, source1, dest1, {}, 0.f, WHITE);
 
         EndDrawing();
