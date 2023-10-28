@@ -86,22 +86,26 @@ int main()
         {
             origin = {0.f, axe.height * scale};
             offset = {50.f, 100.f};
+            offset.x = 10.f;
+            offset.y = 10.f;
             
-            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? -100.f : 0.f;
+            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? 100.f : 0.f;
         }
         else
         {
             origin = {axe.width * scale, axe.height * scale};
             offset = {50.f, 100.f};
+            offset.x = 15.f;
+            offset.y = 15.f;
            
-            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? -150.f : 0.f;
+            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? -40.f : 0.f;
         }
 
         
         // draw the axe
 
         Rectangle source1{0.f, 0.f, static_cast<float>(axe.width) * rightLeft, static_cast<float>(axe.height)};
-        Rectangle dest1{soldierPos.x, soldierPos.y, axe.width * scale, axe.height * scale};
+        Rectangle dest1{soldierPos.x + offset.x, soldierPos.y + offset.y, axe.width * scale, axe.height * scale};
         DrawTexturePro(axe, source1, dest1, origin, rotation, WHITE);
 
         EndDrawing();
