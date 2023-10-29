@@ -36,6 +36,7 @@ int main()
         BeginDrawing();
         ClearBackground(WHITE);
 
+        // moving the character
         
         Vector2 direction{};
         if (IsKeyDown(KEY_A)) direction.x -= 1.0;
@@ -78,7 +79,8 @@ int main()
         Rectangle dest{soldierPos.x, soldierPos.y, 3.0f * (float)soldier.width/4.0f, 3.0f * (float)soldier.height};
         DrawTexturePro(soldier, source, dest, Vector2{}, 0.f, WHITE);
 
-        // move the axe
+        // swing the axe
+
         Vector2 origin{};
         Vector2 offset{};
         float rotation{};
@@ -89,7 +91,7 @@ int main()
             offset.x = 10.f;
             offset.y = 10.f;
             
-            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? 100.f : 0.f;
+            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? 40.f : 0.f;
         }
         else
         {
