@@ -86,21 +86,21 @@ int main()
         float rotation{};
         if (rightLeft > 0.f)
         {
-            origin = {0.f, axe.height * scale};
+            origin = {axe.width/8 * scale, axe.height  * scale};
             offset = {50.f, 100.f};
-            offset.x = 10.f;
-            offset.y = 10.f;
+            offset.x = 5.f;
+            offset.y = 5.f;
             
-            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? 40.f : 0.f;
+            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? 70.f : 0.f;
         }
         else
         {
-            origin = {axe.width * scale, axe.height * scale};
+            origin = {axe.width/8 * scale, axe.height * scale};
             offset = {50.f, 100.f};
-            offset.x = 15.f;
-            offset.y = 15.f;
+            offset.x = 70.f;
+            offset.y = 55.f;
            
-            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? -40.f : 0.f;
+            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? -70.f : 0.f;
         }
 
         
