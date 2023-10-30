@@ -91,7 +91,7 @@ int main()
             offset.x = 30.f;
             offset.y = 75.f;
             
-            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? 85.f : 40.f;
+            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? 85.f : 60.f;
         }
         else
         {
@@ -100,7 +100,7 @@ int main()
             offset.x = 40.f;
             offset.y = 50.f;
            
-            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? -85.f : -40.f;
+            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? -85.f : -60.f;
         }
 
         
