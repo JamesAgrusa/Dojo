@@ -11,7 +11,7 @@ int main()
     Vector2 mapPos{0.0, 0.0};
     float speed{4.0};
 
-    Texture2D axe{LoadTexture("Weapons/Axe/Axe.png")};
+    Texture2D axe{LoadTexture("Weapons/Lance2/Lance.png")};
     
     
     Texture2D soldier_walk = LoadTexture("newcharacters/soldier_walk.png");
@@ -88,19 +88,19 @@ int main()
         {
             origin = {axe.width * scale, axe.height  * scale};
             offset = {40.f, 60.f};
-            offset.x = 40.f;
+            offset.x = 30.f;
             offset.y = 75.f;
             
-            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? 65.f : 40.f;
+            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? 85.f : 40.f;
         }
         else
         {
             origin = {axe.width * scale, axe.height * scale};
             offset = {50.f, 100.f};
-            offset.x = 50.f;
-            offset.y = 45.f;
+            offset.x = 40.f;
+            offset.y = 50.f;
            
-            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? -65.f : -40.f;
+            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? -85.f : -40.f;
         }
 
         
