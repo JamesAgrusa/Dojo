@@ -86,25 +86,25 @@ int main()
         float rotation{};
         if (rightLeft > 0.f)
         {
-            origin = {axe.width/8 * scale, axe.height  * scale};
-            offset = {50.f, 100.f};
-            offset.x = 5.f;
-            offset.y = 5.f;
+            origin = {axe.width * scale, axe.height  * scale};
+            offset = {40.f, 60.f};
+            offset.x = 40.f;
+            offset.y = 55.f;
             
-            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? 70.f : 0.f;
+            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? 30.f : 0.f;
         }
         else
         {
-            origin = {axe.width/8 * scale, axe.height * scale};
+            origin = {axe.width * scale, axe.height * scale};
             offset = {50.f, 100.f};
-            offset.x = 70.f;
+            offset.x = 50.f;
             offset.y = 55.f;
            
-            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? -70.f : 0.f;
+            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? -30.f : 0.f;
         }
 
         
-        // draw the axe
+        // draw the axe 
 
         Rectangle source1{0.f, 0.f, static_cast<float>(axe.width) * rightLeft, static_cast<float>(axe.height)};
         Rectangle dest1{soldierPos.x + offset.x, soldierPos.y + offset.y, axe.width * scale, axe.height * scale};
