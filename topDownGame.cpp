@@ -89,18 +89,18 @@ int main()
             origin = {axe.width * scale, axe.height  * scale};
             offset = {40.f, 60.f};
             offset.x = 40.f;
-            offset.y = 55.f;
+            offset.y = 75.f;
             
-            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? 30.f : 0.f;
+            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? 65.f : 40.f;
         }
         else
         {
             origin = {axe.width * scale, axe.height * scale};
             offset = {50.f, 100.f};
             offset.x = 50.f;
-            offset.y = 55.f;
+            offset.y = 45.f;
            
-            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? -30.f : 0.f;
+            rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? -65.f : -40.f;
         }
 
         
