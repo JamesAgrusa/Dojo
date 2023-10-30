@@ -88,7 +88,7 @@ int main()
         {
             origin = {axe.width * scale, axe.height  * scale};
             offset = {40.f, 60.f};
-            offset.x = 30.f;
+            offset.x = 25.f;
             offset.y = 75.f;
             
             rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? 85.f : 60.f;
