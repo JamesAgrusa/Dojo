@@ -106,8 +106,8 @@ int main(void)
                 case GAMEPLAY:
                 {
                     {
-    const int windowWidth{600};
-    const int windowHeight{600};
+    const int windowWidth{1100};
+    const int windowHeight{900};
     InitWindow(windowWidth, windowHeight, "James' Top Down");
 
     Texture2D map = LoadTexture("nature_tileset/OpenWorldMap24x24.png");
@@ -230,7 +230,7 @@ int main(void)
                 default: break;
             }
 
-        EndDrawing();
+         EndDrawing();
         //----------------------------------------------------------------------------------
     }
 
@@ -244,4 +244,3 @@ int main(void)
 
     return 0;
 }
-
