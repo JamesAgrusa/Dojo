@@ -91,16 +91,16 @@ int main(void)
                 case LOGO:
                 {
                     // TODO: Draw LOGO screen here!
-                    DrawText("UnrealityArts", 20, 20, 40, LIGHTGRAY);
-                    DrawText("Welcome To The Game", 290, 220, 20, GRAY);
+                    DrawText("UnrealityArts", 120, 20, 40, BLACK);
+                    DrawText("Welcome To The Game", 120, 220, 20, BLACK);
 
                 } break;
                 case TITLE:
                 {
                     // TODO: Draw TITLE screen here!
                     DrawRectangle(0, 0, screenWidth, screenHeight, BLUE);
-                    DrawText("Soldier Destruction", 20, 20, 40, DARKGREEN);
-                    DrawText("Right click to Start", 120, 220, 20, DARKGREEN);
+                    DrawText("Soldier Destruction", 120, 20, 40, YELLOW);
+                    DrawText("Right click to Start", 120, 220, 20, YELLOW);
 
                 } break;
                 case GAMEPLAY:
