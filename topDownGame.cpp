@@ -16,7 +16,7 @@ int main(void)
     const int screenWidth = 800;
     const int screenHeight = 450;
 
-    InitWindow(screenWidth, screenHeight, "raylib [core] example - basic screen manager");
+    InitWindow(screenWidth, screenHeight, "Soldier Destruction");
 
     GameScreen currentScreen = LOGO;
 
@@ -40,8 +40,8 @@ int main(void)
 
                 framesCounter++;    // Count frames
 
-                // Wait for 2 seconds (120 frames) before jumping to TITLE screen
-                if (framesCounter > 120)
+                // Wait for 6 seconds (360 frames) before jumping to TITLE screen
+                if (framesCounter > 360)
                 {
                     currentScreen = TITLE;
                 }
@@ -51,7 +51,7 @@ int main(void)
                 // TODO: Update TITLE screen variables here!
 
                 // Press enter to change to GAMEPLAY screen
-                if (IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP))
+                if (IsMouseButtonDown(MOUSE_RIGHT_BUTTON) || IsGestureDetected(GESTURE_TAP))
                 {
                     currentScreen = GAMEPLAY;
                 }
@@ -91,16 +91,16 @@ int main(void)
                 case LOGO:
                 {
                     // TODO: Draw LOGO screen here!
-                    DrawText("LOGO SCREEN", 20, 20, 40, LIGHTGRAY);
-                    DrawText("WAIT for 2 SECONDS...", 290, 220, 20, GRAY);
+                    DrawText("UnrealityArts", 20, 20, 40, LIGHTGRAY);
+                    DrawText("Welcome To The Game", 290, 220, 20, GRAY);
 
                 } break;
                 case TITLE:
                 {
                     // TODO: Draw TITLE screen here!
-                    DrawRectangle(0, 0, screenWidth, screenHeight, GREEN);
-                    DrawText("TITLE SCREEN", 20, 20, 40, DARKGREEN);
-                    DrawText("PRESS ENTER or TAP to JUMP to GAMEPLAY SCREEN", 120, 220, 20, DARKGREEN);
+                    DrawRectangle(0, 0, screenWidth, screenHeight, BLUE);
+                    DrawText("Soldier Destruction", 20, 20, 40, DARKGREEN);
+                    DrawText("Right click to Start", 120, 220, 20, DARKGREEN);
 
                 } break;
                 case GAMEPLAY:
@@ -108,7 +108,7 @@ int main(void)
                     {
     const int windowWidth{1100};
     const int windowHeight{900};
-    InitWindow(windowWidth, windowHeight, "James' Top Down");
+    InitWindow(windowWidth, windowHeight, "Soldier Destruction");
 
     Texture2D map = LoadTexture("nature_tileset/OpenWorldMap24x24.png");
     Vector2 mapPos{0.0, 0.0};
