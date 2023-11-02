@@ -4,7 +4,7 @@ class Hero
 {
     public:
     Hero(int windowWidth, int windowHeight);
-    void tick(float deltaTime);
+    virtual void tick(float deltaTime);
     virtual Vector2 soldierPos();
 
     protected:
