@@ -113,6 +113,9 @@ while (!WindowShouldClose())    // Detect window close button or ESC key
 
                     Texture2D map = LoadTexture("nature_tileset/OpenWorldMap24x24.png");
                     Vector2 mapPos{0.0, 0.0};
+
+                    Hero soldier{windowWidth, windowHeight};
+        
                     
                     SetTargetFPS(60);
                     while (!WindowShouldClose())
@@ -120,10 +123,7 @@ while (!WindowShouldClose())    // Detect window close button or ESC key
                             BeginDrawing();
                             ClearBackground(WHITE);
 
-                            Hero soldier{windowWidth, windowHeight};
-        
-                            
-        
+                            soldier.tick(deltaTime);
         
                             // draw the map
                             DrawTextureEx(map, mapPos, 0.0, 4.0, WHITE);
