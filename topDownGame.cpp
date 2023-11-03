@@ -112,6 +112,8 @@ while (!WindowShouldClose())    // Detect window close button or ESC key
                     InitWindow(windowWidth, windowHeight, "Soldier Destruction");
 
                     Texture2D map = LoadTexture("nature_tileset/OpenWorldMap24x24.png");
+                    Vector2 mapPos{0.0, 0.0};
+                    // const float mapScale{4.0f};
                     
 
                     Hero soldier{windowWidth, windowHeight};
@@ -122,8 +124,10 @@ while (!WindowShouldClose())    // Detect window close button or ESC key
                         {
                             BeginDrawing();
                             ClearBackground(WHITE);
+                            
+                            mapPos = Vector2Scale(soldier.getWorldPos(), -1.f);
 
-                            soldier.tick(deltaTime);
+                            soldier.tick(deltaTime());
         
                             // draw the map
                             DrawTextureEx(map, mapPos, 0.0, 4.0, WHITE);
