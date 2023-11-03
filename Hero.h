@@ -5,11 +5,16 @@ class Hero
     public:
     Hero(int windowWidth, int windowHeight);
     virtual void tick(float deltaTime);
-    virtual Vector2 soldierPos();
+    virtual Vector2 getScreenPos() = 0;
+    Vector2 getWorldPos() { return worldPos; }
+    
 
     protected:
     Texture2D soldier{LoadTexture("newcharacters/soldier_walk.png")};
     Texture2D soldier_walk{LoadTexture("newcharacters/soldier_walk.png")};
+    Vector2 mapPos{0.0, 0.0};
+    Vector2 worldPos{};
+    Vector2 worldPosLastFrame{}; 
     // 1 : facing right, -1 : facing left
     float rightLeft{1.f};
     // animation variables
@@ -19,6 +24,8 @@ class Hero
     const float updateTime{1.f/10.f};
     float scale{4.0f};
     float speed{4.0};
+    float height {};
+    float width{};
 
     private:
     int windoWidth{1100};
