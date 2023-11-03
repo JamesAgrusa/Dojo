@@ -112,7 +112,7 @@ while (!WindowShouldClose())    // Detect window close button or ESC key
                     InitWindow(windowWidth, windowHeight, "Soldier Destruction");
 
                     Texture2D map = LoadTexture("nature_tileset/OpenWorldMap24x24.png");
-                    Vector2 mapPos{0.0, 0.0};
+                    
 
                     Hero soldier{windowWidth, windowHeight};
         
