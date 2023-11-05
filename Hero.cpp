@@ -6,8 +6,8 @@ Hero::Hero(int winWidth, int winHeight) :
 windowWidth(winWidth),
 windowHeight(winHeight)
 {
-    // width = texture.width / maxFrames;
-    // height = texture.height;
+    width = soldier.width / maxFrames;
+    height = soldier.height;
 }
 
 Vector2 Hero::getScreenPos()
