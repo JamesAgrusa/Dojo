@@ -116,7 +116,7 @@ while (!WindowShouldClose())    // Detect window close button or ESC key
                     // const float mapScale{4.0f};
                     
 
-                    // Hero soldier {windowWidth, windowHeight};
+                    Hero soldier{windowWidth, windowHeight};
         
                     
                     SetTargetFPS(60);
@@ -128,9 +128,9 @@ while (!WindowShouldClose())    // Detect window close button or ESC key
                             // draw the map
                             DrawTextureEx(map, mapPos, 0.0, 4.0, WHITE);
                             
-                            // mapPos = Vector2Scale(soldier.getWorldPos(), -1.f);
+                            mapPos = Vector2Scale(soldier.getWorldPos(), -1.f);
 
-                            // soldier.tick(deltaTime());
+                            soldier.tick(deltaTime());
         
                             
                             EndDrawing();
