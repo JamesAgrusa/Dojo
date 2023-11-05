@@ -10,9 +10,9 @@ class Hero
     
 
     protected:
+    Texture2D texture{LoadTexture("newcharacters/soldier_walk.png")};
     Texture2D soldier{LoadTexture("newcharacters/soldier_walk.png")};
     Texture2D soldier_walk{LoadTexture("newcharacters/soldier_walk.png")};
-    Vector2 mapPos{0.0, 0.0};
     Vector2 worldPos{};
     Vector2 worldPosLastFrame{}; 
     // 1 : facing right, -1 : facing left
@@ -26,6 +26,7 @@ class Hero
     float speed{4.0};
     float height {};
     float width{};
+    Vector2 velocity{};
 
     private:
     int windowWidth{1100};
