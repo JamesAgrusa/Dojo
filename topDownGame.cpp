@@ -17,6 +17,8 @@ int main(void)
 const int screenWidth = 800;
 const int screenHeight = 450;
 
+        
+
 InitWindow(screenWidth, screenHeight, "Soldier Destruction");
 
 GameScreen currentScreen = LOGO;
@@ -130,7 +132,7 @@ while (!WindowShouldClose())    // Detect window close button or ESC key
                             
                             mapPos = Vector2Scale(soldier.getWorldPos(), -1.f);
 
-                            soldier.tick(deltaTime());
+                            soldier.tick(GetFrameTime());
         
                             
                             EndDrawing();
@@ -149,6 +151,8 @@ while (!WindowShouldClose())    // Detect window close button or ESC key
                 } break;
             default: break;
         }
+
+
 
         EndDrawing();
     //----------------------------------------------------------------------------------
