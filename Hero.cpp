@@ -6,8 +6,8 @@ Hero::Hero(int winWidth, int winHeight) :
 windowWidth(winWidth),
 windowHeight(winHeight)
 {
-    width = soldier.width / maxFrames;
-    height = soldier.height;
+    width = texture.width / maxFrames;
+    height = texture.height;
 }
 
 Vector2 Hero::getScreenPos()
@@ -22,26 +22,28 @@ void Hero::tick(float deltaTime)
 {
     worldPosLastFrame = worldPos;
 
-    Vector2 direction{};
-    if (IsKeyDown(KEY_A)) direction.x -= 1.0;
-    if (IsKeyDown(KEY_D)) direction.x += 1.0;
-    if (IsKeyDown(KEY_W)) direction.y -= 1.0;
-    if (IsKeyDown(KEY_S)) direction.y += 1.0;
-    if (Vector2Length(direction) != 0.0)
+    Vector2 velocity{};
+    if (IsKeyDown(KEY_A)) velocity.x -= 1.0;
+    if (IsKeyDown(KEY_D)) velocity.x += 1.0;
+    if (IsKeyDown(KEY_W)) velocity.y -= 1.0;
+    if (IsKeyDown(KEY_S)) velocity.y += 1.0;
+    
+    if (Vector2Length(velocity) != 0.0)
         {
-            // set mapPos = mapPos - direction
+            // set mapPos = mapPos - velocity
                                 
-            worldPos = Vector2Subtract(worldPos, Vector2Scale(Vector2Normalize(direction), speed));
-            direction.x < 0.f ? rightLeft = -1.f : rightLeft = 1.f;
-            soldier = soldier_walk;
+            worldPos = Vector2Subtract(worldPos, Vector2Scale(Vector2Normalize(velocity), speed));
+            velocity.x < 0.f ? rightLeft = -1.f : rightLeft = 1.f;
+            texture = soldier_walk;
         }
         else
         {
             frame++;
             runningTime = 0.f;
             if (frame > maxFrames) frame = 4;
-            soldier = soldier_walk;
+            texture = soldier_walk;
         }
+        velocity = {};
 
     // Draw the character
 
