@@ -2,6 +2,21 @@
 #include "raymath.h"
 #include "Hero.h"
 
+Hero::Hero(int winWidth, int winHeight) :
+windowWidth(winWidth),
+windowHeight(winHeight)
+{
+    // width = texture.width / maxFrames;
+    // height = texture.height;
+}
+
+Vector2 Hero::getScreenPos()
+{
+    return Vector2{
+        static_cast<float>(windowWidth) / 2.0f - scale * (0.5f * width),
+        static_cast<float>(windowHeight) / 2.0f - scale * (0.5f * height)
+    };
+}
 
 void Hero::tick(float deltaTime)
 {
@@ -27,6 +42,8 @@ void Hero::tick(float deltaTime)
             if (frame > maxFrames) frame = 4;
             soldier = soldier_walk;
         }
+
+    // Draw the character
 
     Rectangle source{frame * width, 0.f, rightLeft * width, height};
     Rectangle dest{getScreenPos().x, getScreenPos().y, 3.0f * width/4.0f, 3.0f * height};
