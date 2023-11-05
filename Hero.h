@@ -28,7 +28,7 @@ class Hero
     float width{};
 
     private:
-    int windoWidth{1100};
+    int windowWidth{1100};
     int windowHeight{900};
     Texture2D axe{LoadTexture("Weapons/Lance2/Lance.png")};
 };
