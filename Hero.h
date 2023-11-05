@@ -5,12 +5,11 @@ class Hero
     public:
     Hero(int windowWidth, int windowHeight);
     virtual void tick(float deltaTime);
-    virtual Vector2 getScreenPos() = 0;
+    virtual Vector2 getScreenPos();
     Vector2 getWorldPos() { return worldPos; }
     
 
     protected:
-    Texture2D texture{LoadTexture("newcharacters/soldier_walk.png")};
     Texture2D soldier{LoadTexture("newcharacters/soldier_walk.png")};
     Texture2D soldier_walk{LoadTexture("newcharacters/soldier_walk.png")};
     Vector2 worldPos{};
@@ -26,7 +25,7 @@ class Hero
     float speed{4.0};
     float height {};
     float width{};
-    Vector2 velocity{};
+    
 
     private:
     int windowWidth{1100};
