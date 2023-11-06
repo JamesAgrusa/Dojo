@@ -55,7 +55,7 @@ void Hero::tick(float deltaTime)
     // Draw the character
 
     Rectangle source{frame * width, 0.f, rightLeft * width, height};
-    Rectangle dest{getScreenPos().x, getScreenPos().y, 4.0f * width, 4.0f * height};
+    Rectangle dest{getScreenPos().x, getScreenPos().y, 3.0f * width, 3.0f * height};
     DrawTexturePro(soldier, source, dest, Vector2{}, 0.f, WHITE);
 
      Vector2 origin{};
@@ -83,8 +83,13 @@ void Hero::tick(float deltaTime)
         
     // draw the axe 
 
-    // Rectangle source1{0.f, 0.f, static_cast<float>(axe.width) * rightLeft, static_cast<float>(axe.height)};
-    // Rectangle dest1{getScreenPos.x + offset.x, getScreenPos.y + offset.y, axe.width * scale, axe.height * scale};
-    // DrawTexturePro(axe, source1, dest1, origin, rotation, WHITE);
+    Rectangle source1{0.f, 0.f, static_cast<float>(axe.width) * rightLeft, static_cast<float>(axe.height)};
+    Rectangle dest1{getScreenPos().x + offset.x, getScreenPos().y + offset.y, axe.width * scale, axe.height * scale};
+    DrawTexturePro(axe, source1, dest1, origin, rotation, WHITE);
 
 }
+
+//void Hero::undoMovement()
+//{
+    //worldPos = worldPosLastFrame;
+//}
