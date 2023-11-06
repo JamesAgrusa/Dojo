@@ -7,6 +7,7 @@ class Hero
     virtual void tick(float deltaTime);
     virtual Vector2 getScreenPos();
     Vector2 getWorldPos() { return worldPos; }
+    // void undoMovement();
     
 
     protected:
@@ -14,9 +15,7 @@ class Hero
     Texture2D soldier_walk{LoadTexture("newcharacters/soldier_walk.png")};
     Vector2 worldPos{};
     Vector2 worldPosLastFrame{}; 
-    // 1 : facing right, -1 : facing left
-    float rightLeft{1.f};
-    // animation variables
+    float rightLeft{-1.f};
     float runningTime{};
     int frame{};
     const int maxFrames{4};
