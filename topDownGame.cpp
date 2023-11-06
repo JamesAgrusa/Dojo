@@ -115,7 +115,7 @@ while (!WindowShouldClose())    // Detect window close button or ESC key
 
                     Texture2D map = LoadTexture("nature_tileset/OpenWorldMap24x24.png");
                     Vector2 mapPos{0.0, 0.0};
-                    // const float mapScale{4.0f};
+                    // const float mapScale{2};
                     
 
                     Hero soldier{windowWidth, windowHeight};
@@ -133,6 +133,14 @@ while (!WindowShouldClose())    // Detect window close button or ESC key
                             mapPos = Vector2Scale(soldier.getWorldPos(), -1.f);
 
                             soldier.tick(GetFrameTime());
+
+                            // if (soldier.getWorldPos().x < 0.f ||
+                                // soldier.getWorldPos().y < 0.f ||
+                                // soldier.getWorldPos().x + windowWidth > map.width * mapScale ||
+                                // soldier.getWorldPos().y + windowHeight > map.height * mapScale)
+                            // {
+                                // soldier.undoMovement();
+                            // }
         
                             
                             EndDrawing();
