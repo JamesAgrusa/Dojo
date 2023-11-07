@@ -1,37 +1,32 @@
 #ifndef BASE_HERO_H
 #define BASE_HERO_H
 #include "raylib.h"
-class BaseCharacter
+
+class BaseHero
 {
-public:
-    BaseCharacter();
-    Vector2 getWorldPos() { return worldPos; }
-    void undoMovement();
-    Rectangle getCollisionRec();
-    virtual void tick(float deltaTime);
-    virtual Vector2 getScreenPos() = 0;
-    bool getAlive() { return alive; }
-    void setAlive(bool isAlive) { alive = isAlive; }
+ public:
+ BaseHero();
+ virtual Vector2 getScrenPos() = 0;
+ virtual void tick(float deltaTime);
+ Vector2 getWorldPos() { return worldPos; }
+
 protected:
-    Texture2D texture{LoadTexture("characters/knight_idle_spritesheet.png")};
-    Texture2D idle{LoadTexture("characters/knight_idle_spritesheet.png")};
-    Texture2D run{LoadTexture("characters/knight_run_spritesheet.png")};
-    Vector2 worldPos{};
-    Vector2 worldPosLastFrame{};
-    // 1 : facing right, -1 : facing left
-    float rightLeft{1.f};
-    // animation variables
-    float runningTime{};
-    int frame{};
-    int maxFrames{6};
-    float updateTime{1.f / 12.f};
-    float speed{4.f};
-    float width{};
-    float height{};
-    float scale{4.0f};
-    Vector2 velocity{};
-private: 
-    bool alive{true};
+Texture2D soldier{LoadTexture("newcharacters/soldier_walk.png")};
+Texture2D soldier_walk{LoadTexture("newcharacters/soldier_walk.png")};
+Vector2 worldPos{};
+Vector2 worldPosLastFrame{}; 
+float rightLeft{-1.f};
+float runningTime{};
+int frame{};
+const int maxFrames{4};
+const float updateTime{1.f/10.f};
+float scale{4.0f};
+float speed{4.0};
+float height {};
+float width{};
+    
+private:
+
 };
 
 #endif
