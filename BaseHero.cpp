@@ -8,16 +8,18 @@ BaseHero::BaseHero()
 
 void BaseHero::tick(float deltaTime)
 {
-    worldPosLastFrame = worldPos;
+    
 
    
-    
-    if (Vector2Length(direction) != 0.0)
+  
+    if (Vector2Length(velocity) != 0.0)
         {
-            // set mapPos = mapPos - direction
-                                
-            worldPos = Vector2Subtract(worldPos, Vector2Scale(Vector2Normalize(direction), speed));
-            direction.x < 0.f ? rightLeft = 1.f : rightLeft = -1.f;
+            // set mapPos = mapPos - velocity
+            
+            
+            worldPosLastFrame = worldPos;                   
+            worldPos = Vector2Add(worldPos, Vector2Scale(Vector2Normalize(velocity), speed));
+            velocity.x < 0.f ? rightLeft = 1.f : rightLeft = -1.f;
             soldier = soldier_walk;
         }
         else
@@ -35,6 +37,9 @@ void BaseHero::tick(float deltaTime)
             runningTime = 0.f;
             if (frame > maxFrames) frame = 0;
         }
+        velocity = {};
+        
+        
 
  // Draw the character
 
