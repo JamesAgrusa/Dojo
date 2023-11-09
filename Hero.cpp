@@ -20,13 +20,13 @@ Vector2 Hero::getScreenPos()
 
 void Hero::tick(float deltaTime)
 {
-    worldPosLastFrame = worldPos;
+    
 
-    Vector2 direction{};
-    if (IsKeyDown(KEY_A)) direction.x += 1.0;
-    if (IsKeyDown(KEY_D)) direction.x -= 1.0;
-    if (IsKeyDown(KEY_W)) direction.y += 1.0;
-    if (IsKeyDown(KEY_S)) direction.y -= 1.0;
+    Vector2 velocity{};
+    if (IsKeyDown(KEY_A)) velocity.x += 1.0;
+    if (IsKeyDown(KEY_D)) velocity.x -= 1.0;
+    if (IsKeyDown(KEY_W)) velocity.y += 1.0;
+    if (IsKeyDown(KEY_S)) velocity.y -= 1.0;
     
     
    
