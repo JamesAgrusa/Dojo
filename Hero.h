@@ -4,12 +4,13 @@
 #include "raylib.h"
 #include "BaseHero.h"
 
-class Hero
+class Hero : public BaseHero
 {
     public:
     Hero(int windowWidth, int windowHeight);
-    virtual void tick(float deltaTime) override;
-    virtual Vector2 getScreenPos() override;
+    virtual void tick(float deltaTime);
+    virtual Vector2 getScreenPos();
+    const int MaxFrames{4};
     // void undoMovement();
     
     private:
