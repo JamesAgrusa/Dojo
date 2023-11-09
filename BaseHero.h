@@ -6,7 +6,7 @@ class BaseHero
 {
  public:
  BaseHero();
- virtual Vector2 getScrenPos() = 0;
+ virtual Vector2 getScreenPos() = 0;
  virtual void tick(float deltaTime);
  Vector2 getWorldPos() { return worldPos; }
 
@@ -24,6 +24,7 @@ float scale{4.0f};
 float speed{4.0};
 float height {};
 float width{};
+Vector2 velocity{};
     
 private:
 
