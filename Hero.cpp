@@ -1,6 +1,5 @@
-#include "raylib.h"
-#include "raymath.h"
 #include "Hero.h"
+#include "raymath.h"
 
 Hero::Hero(int winWidth, int winHeight) :
 windowWidth(winWidth),
@@ -27,23 +26,22 @@ void Hero::tick(float deltaTime)
     if (IsKeyDown(KEY_D)) velocity.x -= 1.0;
     if (IsKeyDown(KEY_W)) velocity.y += 1.0;
     if (IsKeyDown(KEY_S)) velocity.y -= 1.0;
-    
-    
-   
-     Vector2 origin{};
-     Vector2 offset{};
-     float rotation{};
-     if (rightLeft > 0.f)
-     {
+    BaseHero:: tick(deltaTime);
+
+    Vector2 origin{};
+    Vector2 offset{};
+    float rotation{};
+    if (rightLeft > 0.f)
+    {
          origin = {axe.width * scale, axe.height  * scale};
          offset = {40.f, 60.f};
          offset.x = 25.f;
          offset.y = 95.f;
                                 
          rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? 85.f : 70.f;
-     }
-     else
-     {
+    }
+    else
+    {
         origin = {axe.width * scale, axe.height * scale};
         offset = {50.f, 100.f};
         offset.x = 50.f;
@@ -60,8 +58,3 @@ void Hero::tick(float deltaTime)
     DrawTexturePro(axe, source1, dest1, origin, rotation, WHITE);
 
 }
-
-//void Hero::undoMovement()
-//{
-    //worldPos = worldPosLastFrame;
-//}
