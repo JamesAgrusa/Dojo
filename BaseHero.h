@@ -4,30 +4,28 @@
 
 class BaseHero
 {
- public:
- BaseHero();
- virtual Vector2 getScreenPos() = 0;
- virtual void tick(float deltaTime);
- Vector2 getWorldPos() { return worldPos; }
+public:
+    BaseHero();
+    virtual Vector2 getScreenPos() = 0;
+    virtual void tick(float deltaTime);
 
 protected:
-Texture2D soldier{LoadTexture("newcharacters/soldier_walk.png")};
-Texture2D soldier_walk{LoadTexture("newcharacters/soldier_walk.png")};
-Vector2 worldPos{};
-Vector2 worldPosLastFrame{}; 
-float rightLeft{-1.f};
-float runningTime{};
-int frame{};
-const int maxFrames{4};
-const float updateTime{1.f/10.f};
-float scale{4.0f};
-float speed{4.0};
-float height {};
-float width{};
-Vector2 velocity{};
-    
+    Texture2D soldier{LoadTexture("newcharacters/soldier_walk.png")};
+    Texture2D soldier_walk{LoadTexture("newcharacters/soldier_walk.png")};
+    Vector2 worldPos{};
+    Vector2 worldPosLastFrame{};
+    float rightLeft{1.f};
+    float runningTime{};
+    int frame{};
+    const int maxFrames{4};
+    const float updateTime{1.f/10.f};
+    float scale{4.0f};
+    float speed{4.0};
+    float height {};
+    float width{};
+    Vector2 velocity{};
+
 private:
 
 };
-
 #endif
