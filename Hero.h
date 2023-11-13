@@ -8,10 +8,12 @@ class Hero : public BaseHero
 {
     public:
     Hero(int windowWidth, int windowHeight);
-    virtual void tick(float deltaTime);
-    virtual Vector2 getScreenPos();
-    const int MaxFrames{4};
+    virtual void tick(float deltaTime) override;
+    virtual Vector2 getScreenPos() override;
+    Vector2 getWorldPos() { return worldPos; }
     // void undoMovement();
+
+    protected:
     
     private:
     int windowWidth{1100};
