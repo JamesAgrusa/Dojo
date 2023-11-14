@@ -8,6 +8,7 @@ public:
     BaseHero();
     virtual Vector2 getScreenPos() = 0;
     virtual void tick(float deltaTime);
+    bool getAlive() { return alive; }
 
 protected:
     Texture2D soldier{LoadTexture("newcharacters/soldier_walk.png")};
@@ -26,6 +27,7 @@ protected:
     Vector2 velocity{};
 
 private:
+    bool alive{true};
 
 };
 #endif
