@@ -30,11 +30,18 @@ int main()
 
         soldier.tick(GetFrameTime());
 
-        // character is alive: Display Health
-
+        if (!soldier.getAlive()) // character not alive
+        {
+            DrawText("Game Over!", 55.f, 45.f, 40, RED);
+            EndDrawing;
+            continue;
+        }
+        else // character is alive: Display Health
+        {
         std::string soldierHealth = "Health: ";
         soldierHealth.append(std::to_string(soldier.getHealth()), 0, 5);
         DrawText(soldierHealth.c_str(), 55.f, 45.f, 40, RED);
+        }
 
                        
         EndDrawing();
