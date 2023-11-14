@@ -19,14 +19,40 @@ Vector2 Hero::getScreenPos()
 
 void Hero::tick(float deltaTime)
 {
+    worldPosLastFrame = worldPos;
     
+    // move the character
 
     Vector2 velocity{};
     if (IsKeyDown(KEY_A)) velocity.x += 1.0;
     if (IsKeyDown(KEY_D)) velocity.x -= 1.0;
     if (IsKeyDown(KEY_W)) velocity.y += 1.0;
     if (IsKeyDown(KEY_S)) velocity.y -= 1.0;
-    BaseHero:: tick(deltaTime);
+    BaseHero::tick(deltaTime);
+
+    runningTime += deltaTime;
+    if (runningTime >= updateTime)
+    {
+        frame++;
+        runningTime = 0.f;
+        if (frame > maxFrames)
+            frame = 0;
+    }
+
+    if (Vector2Length(velocity) != 0.0)
+        {                  
+            worldPos = Vector2Subtract(worldPos, Vector2Scale(Vector2Normalize(velocity), speed));
+             velocity.x < 0.f ? rightLeft = 1.f : rightLeft = -1.f;
+             soldier = soldier_walk;
+        }
+        else
+        {
+            frame++;
+            runningTime = 0.f;
+           if (frame > maxFrames) frame = 4;
+            soldier = soldier_walk;
+        }
+        velocity = {};
 
     Vector2 origin{};
     Vector2 offset{};
@@ -50,6 +76,7 @@ void Hero::tick(float deltaTime)
         rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? -85.f : -60.f;
     }
 
+    
         
     // draw the axe 
 
@@ -57,4 +84,11 @@ void Hero::tick(float deltaTime)
     Rectangle dest1{getScreenPos().x + offset.x, getScreenPos().y + offset.y, axe.width * scale, axe.height * scale};
     DrawTexturePro(axe, source1, dest1, origin, rotation, WHITE);
 
+    // Draw the character
+
+    Rectangle source{frame * width, 0.f, rightLeft * width, height};
+    Rectangle dest{getScreenPos().x, getScreenPos().y, 4.0f * width, 4.0f * height};
+    DrawTexturePro(soldier, source, dest, Vector2{}, 0.f, WHITE);
+
+    
 }
