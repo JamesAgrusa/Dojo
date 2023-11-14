@@ -1,6 +1,7 @@
 #include "raylib.h"
 #include "raymath.h"
 #include "Hero.h"
+#include <string>
 
 int main()
 {
@@ -28,6 +29,12 @@ int main()
         mapPos = Vector2Scale(soldier.getWorldPos(), -1.f);
 
         soldier.tick(GetFrameTime());
+
+        // character is alive: Display Health
+
+        std::string soldierHealth = "Health: ";
+        soldierHealth.append(std::to_string(soldier.getHealth()), 0, 5);
+        DrawText(soldierHealth.c_str(), 55.f, 45.f, 40, RED);
 
                        
         EndDrawing();
