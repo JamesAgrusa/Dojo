@@ -11,7 +11,7 @@ class Hero : public BaseHero
     virtual void tick(float deltaTime) override;
     virtual Vector2 getScreenPos() override;
     Vector2 getWorldPos() { return worldPos; }
-    // void undoMovement();
+    
 
     protected:
     
