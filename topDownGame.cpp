@@ -8,7 +8,7 @@ int main()
     const int windowHeight{900};
     InitWindow(windowWidth, windowHeight, "Soldier Destruction");
 
-    Texture2D map = LoadTexture("nature_tileset/OpenWorldMap24x24.png");
+    Texture2D map = LoadTexture("nature_tileset/SDmap.png");
     Vector2 mapPos{0.0, 0.0};
     // const float mapScale{2};
                     
