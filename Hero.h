@@ -11,6 +11,7 @@ class Hero : public BaseHero
     virtual void tick(float deltaTime) override;
     virtual Vector2 getScreenPos() override;
     Vector2 getWorldPos() { return worldPos; }
+    float getHealth() const { return health; }
     
 
     protected:
@@ -19,6 +20,7 @@ class Hero : public BaseHero
     int windowWidth{1100};
     int windowHeight{900};
     Texture2D axe{LoadTexture("Weapons/Lance2/Lance.png")};
+    float health{1000};
 };
 
 #endif
