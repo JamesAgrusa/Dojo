@@ -1,6 +1,7 @@
 #include "raylib.h"
 #include "raymath.h"
 #include "Hero.h"
+#include "Monster.h"
 #include <string>
 
 int main()
@@ -15,6 +16,12 @@ int main()
                     
 
     Hero soldier{windowWidth, windowHeight};
+
+    Monster troll
+    {
+        Vector2{600.f, 300.f},
+        LoadTexture("newcharacters/troll_walk.png")
+    };
         
                     
     SetTargetFPS(60);
@@ -30,10 +37,12 @@ int main()
 
         soldier.tick(GetFrameTime());
 
+        troll.tick(GetFrameTime());
+
         if (!soldier.getAlive()) // character not alive
         {
             DrawText("Game Over!", 55.f, 45.f, 40, RED);
-            EndDrawing;
+            // EndDrawing;
             continue;
         }
         else // character is alive: Display Health
