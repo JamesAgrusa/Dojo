@@ -1,12 +1,10 @@
 #include "Monster.h"
 #include "raymath.h"
 
-Monster::Monster(Vector2 pos, Texture2D idle_texture, Texture2D run_texture)
+Monster::Monster(Vector2 pos, Texture2D idle_texture)
 {
     worldPos = pos;
-    texture = idle_texture;
     idle = idle_texture;
-    run = run_texture;
     width = texture.width / maxFrames;
     height = texture.height;
     speed = 3.5f;
@@ -14,8 +12,9 @@ Monster::Monster(Vector2 pos, Texture2D idle_texture, Texture2D run_texture)
 
 void Monster::tick(float deltaTime)
 {
-    getScreenPos() = Vector2Subtract(worldPos, target->getWorldPos());
+    // getScreenPos() = Vector2Subtract(worldPos, target->getWorldPos());
     BaseHero::tick(deltaTime);
+
 }
 
 Vector2 Monster::getScreenPos()
