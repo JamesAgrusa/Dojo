@@ -17,12 +17,13 @@ int main()
 
     Hero soldier{windowWidth, windowHeight};
 
-    Monster troll
-    {
-        Vector2{600.f, 300.f},
-        LoadTexture("newcharacters/troll_walk.png")
+    Monster troll{
+         Vector2{},
+        LoadTexture("newcharacters/eye_walk.png"),
     };
-        
+
+
+    // troll.setTarget(&soldier); 
                     
     SetTargetFPS(60);
     while (!WindowShouldClose())
