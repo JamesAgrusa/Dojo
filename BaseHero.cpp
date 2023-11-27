@@ -6,8 +6,19 @@ BaseHero::BaseHero()
 
 }
 
+
 void BaseHero::tick(float deltaTime)
 {
+    worldPosLastFrame = worldPos;
+
+    Vector2 velocity{};
+    if (IsKeyDown(KEY_A)) velocity.x += 1.0;
+    if (IsKeyDown(KEY_D)) velocity.x -= 1.0;
+    if (IsKeyDown(KEY_W)) velocity.y += 1.0;
+    if (IsKeyDown(KEY_S)) velocity.y -= 1.0;
+
+    // update animation frame
+
     runningTime += deltaTime;
     if (runningTime >= updateTime)
     {
@@ -21,14 +32,22 @@ void BaseHero::tick(float deltaTime)
     {                  
         worldPos = Vector2Subtract(worldPos, Vector2Scale(Vector2Normalize(velocity), speed));
         velocity.x < 0.f ? rightLeft = 1.f : rightLeft = -1.f;
-        soldier = soldier_walk;
+        texture = idle;
     }
     else
     {
         frame++;
         runningTime = 0.f;
         if (frame > maxFrames) frame = 4;
-        soldier = soldier_walk;
+        texture = idle;
     }
-    velocity = {};   
+    velocity = {};  
+
+    
+     // Draw the character
+
+    Rectangle source{frame * width, 0.f, rightLeft * width, height};
+    Rectangle dest{getScreenPos().x, getScreenPos().y, 4.0f * width, 4.0f * height};
+    DrawTexturePro(texture, source, dest, Vector2{}, 0.f, WHITE);
+ 
 }
