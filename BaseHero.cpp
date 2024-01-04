@@ -11,12 +11,8 @@ void BaseHero::tick(float deltaTime)
 {
     worldPosLastFrame = worldPos;
 
-    Vector2 velocity{};
-    if (IsKeyDown(KEY_A)) velocity.x += 1.0;
-    if (IsKeyDown(KEY_D)) velocity.x -= 1.0;
-    if (IsKeyDown(KEY_W)) velocity.y += 1.0;
-    if (IsKeyDown(KEY_S)) velocity.y -= 1.0;
-
+    
+    
     // update animation frame
 
     runningTime += deltaTime;
@@ -28,11 +24,14 @@ void BaseHero::tick(float deltaTime)
             frame = 0;
     }
 
+    
+
     if (Vector2Length(velocity) != 0.0)
     {                  
         worldPos = Vector2Subtract(worldPos, Vector2Scale(Vector2Normalize(velocity), speed));
         velocity.x < 0.f ? rightLeft = 1.f : rightLeft = -1.f;
         texture = idle;
+        
     }
     else
     {
@@ -42,6 +41,7 @@ void BaseHero::tick(float deltaTime)
         texture = idle;
     }
     velocity = {};  
+    
 
     
      // Draw the character
@@ -49,5 +49,7 @@ void BaseHero::tick(float deltaTime)
     Rectangle source{frame * width, 0.f, rightLeft * width, height};
     Rectangle dest{getScreenPos().x, getScreenPos().y, 4.0f * width, 4.0f * height};
     DrawTexturePro(texture, source, dest, Vector2{}, 0.f, WHITE);
+
+    
  
 }
