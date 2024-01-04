@@ -9,6 +9,7 @@ public:
     virtual Vector2 getScreenPos() = 0;
     virtual void tick(float deltaTime);
     bool getAlive() { return alive; }
+    void setAlive(bool isAlive) { alive = isAlive; }
     
 protected:
     Texture2D texture{LoadTexture("newcharacters/soldier_walk.png")};
