@@ -20,6 +20,11 @@ Vector2 Hero::getScreenPos()
 void Hero::tick(float deltaTime)
 {
     if (!getAlive()) return;
+
+    if (IsKeyDown(KEY_A)) velocity.x += 1.0;
+    if (IsKeyDown(KEY_D)) velocity.x -= 1.0;
+    if (IsKeyDown(KEY_W)) velocity.y += 1.0;
+    if (IsKeyDown(KEY_S)) velocity.y -= 1.0;
     
      
     BaseHero::tick(deltaTime);
@@ -47,9 +52,7 @@ void Hero::tick(float deltaTime)
                                 
         rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? -85.f : -60.f;
     }
-
-    
-        
+   
     // draw the axe 
 
     Rectangle source1{0.f, 0.f, static_cast<float>(axe.width) * rightLeft, static_cast<float>(axe.height)};
@@ -57,6 +60,13 @@ void Hero::tick(float deltaTime)
     DrawTexturePro(axe, source1, dest1, origin, rotation, WHITE);
 
     
+}
 
-   
+void Hero::takeDamage(float damage)
+{
+    health -= damage;
+    if (health <= 0.f)
+    {
+        setAlive(false);
+    }
 }
