@@ -17,13 +17,33 @@ int main()
 
     Hero soldier{windowWidth, windowHeight};
 
-    Monster troll{
-         Vector2{},
+    Monster eye{
+         Vector2{600, 300},
         LoadTexture("newcharacters/eye_walk.png"),
     };
 
+    Monster troll{
+        Vector2{800, 300},
+        LoadTexture("newcharacters/troll_walk.png"),
+    };
 
-    // troll.setTarget(&soldier); 
+    Monster bat{
+        Vector2{700, 300},
+        LoadTexture("newcharacters/bat_walk.png"),
+    };
+
+    Monster* monsters[]{
+        &eye,
+        &troll,
+        &bat
+    };
+
+    for (auto monster : monsters)
+    {
+    monster->setTarget(&soldier);
+    }
+
+    
                     
     SetTargetFPS(60);
     while (!WindowShouldClose())
@@ -38,7 +58,10 @@ int main()
 
         soldier.tick(GetFrameTime());
 
-        troll.tick(GetFrameTime());
+        for (auto monster : monsters)
+        {
+            monster->tick(GetFrameTime());
+        }
 
         if (!soldier.getAlive()) // character not alive
         {
