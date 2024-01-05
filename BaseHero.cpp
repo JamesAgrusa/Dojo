@@ -6,6 +6,16 @@ BaseHero::BaseHero()
 
 }
 
+Rectangle BaseHero::getCollisionRec()
+{
+    return Rectangle{
+        getScreenPos().x,
+        getScreenPos().y,
+        width * scale,
+        height * scale
+    };
+}
+
 
 void BaseHero::tick(float deltaTime)
 {
