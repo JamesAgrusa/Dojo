@@ -40,6 +40,12 @@ void Hero::tick(float deltaTime)
          offset = {40.f, 60.f};
          offset.x = 25.f;
          offset.y = 95.f;
+          weaponCollisionRec = {
+            getScreenPos().x + offset.x - axe.width * scale,
+            getScreenPos().y + offset.y - axe.height * scale,
+            axe.width * scale,
+           axe.height * scale
+        };
                                 
          rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? 85.f : 70.f;
     }
@@ -49,6 +55,12 @@ void Hero::tick(float deltaTime)
         offset = {50.f, 100.f};
         offset.x = 50.f;
         offset.y = 70.f;
+       weaponCollisionRec = {
+            getScreenPos().x + offset.x - axe.width * scale,
+            getScreenPos().y + offset.y - axe.height * scale,
+            axe.width * scale,
+           axe.height * scale
+        };
                                 
         rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? -85.f : -60.f;
     }
