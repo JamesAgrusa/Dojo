@@ -63,6 +63,17 @@ int main()
             monster->tick(GetFrameTime());
         }
 
+         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        {
+            for (auto monster : monsters)
+            {
+                if (CheckCollisionRecs(monster->getCollisionRec(), soldier.getWeaponCollisionRec()))
+                {
+                    monster->setAlive(false);
+                }
+            }
+        }
+
         if (!soldier.getAlive()) // character not alive
         {
             DrawText("Game Over!", 55.f, 45.f, 40, RED);
