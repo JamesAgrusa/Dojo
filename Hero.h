@@ -12,7 +12,8 @@ class Hero : public BaseHero
     virtual Vector2 getScreenPos() override;
     Vector2 getWorldPos() { return worldPos; }
     float getHealth() const { return health; }
-    
+    void takeDamage(float damage);
+    Rectangle getWeaponCollisionRec() { return weaponCollisionRec; }
 
     protected:
     
