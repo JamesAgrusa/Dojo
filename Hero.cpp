@@ -26,11 +26,8 @@ void Hero::tick(float deltaTime)
     if (IsKeyDown(KEY_W)) velocity.y += 1.0;
     if (IsKeyDown(KEY_S)) velocity.y -= 1.0;
     
-     
     BaseHero::tick(deltaTime);
 
-
-   
     Vector2 origin{};
     Vector2 offset{};
     float rotation{};
@@ -40,7 +37,7 @@ void Hero::tick(float deltaTime)
          offset = {40.f, 60.f};
          offset.x = 25.f;
          offset.y = 95.f;
-          weaponCollisionRec = {
+         weaponCollisionRec = {
             getScreenPos().x + offset.x - axe.width * scale,
             getScreenPos().y + offset.y - axe.height * scale,
             axe.width * scale,
