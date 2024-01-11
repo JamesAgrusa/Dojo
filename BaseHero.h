@@ -10,6 +10,7 @@ public:
     virtual void tick(float deltaTime);
     bool getAlive() { return alive; }
     void setAlive(bool isAlive) { alive = isAlive; }
+    Rectangle getCollisionRec();
     
 protected:
     Texture2D texture{LoadTexture("newcharacters/soldier_walk.png")};
