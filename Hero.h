@@ -22,6 +22,7 @@ class Hero : public BaseHero
     int windowHeight{900};
     Texture2D axe{LoadTexture("Weapons/Lance2/Lance.png")};
     float health{1000};
+    Rectangle weaponCollisionRec{};
 };
 
 #endif
