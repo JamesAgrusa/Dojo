@@ -27,4 +27,5 @@ void Monster::tick(float deltaTime)
 Vector2 Monster::getScreenPos()
 {
     return Vector2Subtract(worldPos, target->getWorldPos());
+
 }
