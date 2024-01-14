@@ -12,23 +12,24 @@ int main()
 
     Texture2D map = LoadTexture("nature_tileset/SDmap.png");
     Vector2 mapPos{0.0, 0.0};
-    // const float mapScale{2};
+    const float mapScale{4.0};
                     
-
+    // hero location 
     Hero soldier{windowWidth, windowHeight};
 
+    // monster locations
     Monster eye{
-         Vector2{600, 300},
+         Vector2{600, 600},
         LoadTexture("newcharacters/eye_walk.png"),
     };
 
     Monster troll{
-        Vector2{800, 300},
+        Vector2{800, 600},
         LoadTexture("newcharacters/troll_walk.png"),
     };
 
     Monster bat{
-        Vector2{700, 300},
+        Vector2{700, 600},
         LoadTexture("newcharacters/bat_walk.png"),
     };
 
@@ -51,28 +52,10 @@ int main()
         BeginDrawing();
         ClearBackground(WHITE);
 
-        // draw the map
-        DrawTextureEx(map, mapPos, 0.0, 4.0, WHITE);
-                            
         mapPos = Vector2Scale(soldier.getWorldPos(), -1.f);
 
-        soldier.tick(GetFrameTime());
-
-        for (auto monster : monsters)
-        {
-            monster->tick(GetFrameTime());
-        }
-
-         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-        {
-            for (auto monster : monsters)
-            {
-                if (CheckCollisionRecs(monster->getCollisionRec(), soldier.getWeaponCollisionRec()))
-                {
-                    monster->setAlive(false);
-                }
-            }
-        }
+        // draw the map
+        DrawTextureEx(map, mapPos, 0.0, 4.0, WHITE);
 
         if (!soldier.getAlive()) // character not alive
         {
@@ -86,8 +69,39 @@ int main()
         soldierHealth.append(std::to_string(soldier.getHealth()), 0, 5);
         DrawText(soldierHealth.c_str(), 55.f, 45.f, 40, RED);
         }
+                            
+        // checking map boundaries
+        soldier.tick(GetFrameTime());
 
-                       
+        if (soldier.getWorldPos().x < 0.f ||
+            soldier.getWorldPos().y < 0.f ||
+            soldier.getWorldPos().x + windowWidth > map.width  * mapScale ||
+            soldier.getWorldPos().y + windowHeight > map.height * mapScale)
+            
+        {
+            soldier.undoMovement();
+           
+        }
+
+        for (auto monster : monsters)
+        {
+            monster->tick(GetFrameTime());
+            
+        }
+
+         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        {
+            for (auto monster : monsters)
+            {
+                if (CheckCollisionRecs(monster->getCollisionRec(), soldier.getWeaponCollisionRec()))
+                {
+                    monster->setAlive(false);
+                }
+            }
+        }
+
+        
+        
         EndDrawing();
     }
     CloseWindow();
