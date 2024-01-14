@@ -6,6 +6,11 @@ BaseHero::BaseHero()
 
 }
 
+void BaseHero::undoMovement()
+{
+    worldPos = worldPosLastFrame;
+}
+
 Rectangle BaseHero::getCollisionRec()
 {
     return Rectangle{
@@ -16,13 +21,10 @@ Rectangle BaseHero::getCollisionRec()
     };
 }
 
-
 void BaseHero::tick(float deltaTime)
 {
     worldPosLastFrame = worldPos;
 
-    
-    
     // update animation frame
 
     runningTime += deltaTime;
