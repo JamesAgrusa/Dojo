@@ -7,10 +7,12 @@ class BaseHero
 public:
     BaseHero();
     virtual Vector2 getScreenPos() = 0;
+    Vector2 getWorldPos() { return worldPos; }
     virtual void tick(float deltaTime);
     bool getAlive() { return alive; }
     void setAlive(bool isAlive) { alive = isAlive; }
     Rectangle getCollisionRec();
+    void undoMovement();
     
 protected:
     Texture2D texture{LoadTexture("newcharacters/soldier_walk.png")};
