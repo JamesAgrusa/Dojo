@@ -33,7 +33,8 @@ int main()
         LoadTexture("newcharacters/bat_walk.png"),
     };
 
-    Monster* monsters[]{
+    Monster* monsters[]
+    {
         &eye,
         &troll,
         &bat
@@ -60,7 +61,8 @@ int main()
         if (!soldier.getAlive()) // character not alive
         {
             DrawText("Game Over!", 55.f, 45.f, 40, RED);
-            // EndDrawing;
+            DrawText("Thanks For Playing!", 75.f, 95.f, 40, YELLOW);
+            EndDrawing();
             continue;
         }
         else // character is alive: Display Health
