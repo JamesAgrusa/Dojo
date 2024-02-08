@@ -9,14 +9,14 @@
 using namespace std;
 
 void GameSelection();
-void PlayGame();
+void GameIntro();
 // bool WantToPlayAgain();
 
 
 int main()
 {
 
-	PlayGame();
+	GameIntro();
 	GameSelection();
 	
 
@@ -47,7 +47,7 @@ void GameSelection()
 		}
 }
 
-void PlayGame()
+void GameIntro()
 {
 	const int size = 100;
 
