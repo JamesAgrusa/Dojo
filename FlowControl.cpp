@@ -7,7 +7,9 @@ class LeagueOfLegends
 {
 public:
 	LeagueOfLegends();
-
+	string character("Ashe");
+	string character("Leona");
+	string character("Taric");
 
 private:
 };
@@ -38,7 +40,10 @@ private:
 
 void GameSelection();
 void GameIntro();
-void WeaponChoice();
+
+const int size = 100;
+
+char sentence[size];
 
 
 
@@ -66,7 +71,7 @@ void GameSelection()
 		cout << "Now that we know what game you want to play.\nIts time to pick a character!" << endl;
 		cout << "You have three choices for a character: \n";
 		cout << "Ashe(C), Leona(D), or the obvious choice Taric(E)" << endl;
-		WeaponChoice();
+		cin.character;
 	}
 	else
 	{
@@ -74,9 +79,9 @@ void GameSelection()
 		cout << "Now that we know what game you want to play.\nIts time to pick a weapon!" << endl;
 		cout << "You have three choices for a weapon: \n";
 		cout << "SMG(F), AR(G), Sniper(H)\n";
-
+		
 	}
-	return ;
+	switch 
 }
 
 void GameIntro()
@@ -88,13 +93,5 @@ void GameIntro()
 
 	cout << "Hello! And WELCOME. " << endl;
 	cout << "Todays activity is simple. This will be a Chose Your Own Adventure game! " << endl;
-}
-
-void WeaponChoice()
-{
-	char weapon = (char('C'), char('D'), char('E'));
-	switch (weapon)
-			case 'C':
-				cout << "You Picked Ashe!\n";
 }
 
