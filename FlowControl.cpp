@@ -9,20 +9,14 @@
 using namespace std;
 
 void GameSelection();
+void PlayGame();
 // bool WantToPlayAgain();
 
-const int IGNORE_CHARS = 256;
 
 int main()
 {
 
-	const int size = 100;
-
-	char sentence[size];
-	bool failure;
-
-	cout << "Hello! And WELCOME. " << endl;
-	cout << "Todays activity is simple. This will be a Chose Your Own Adventure game! " << endl;
+	PlayGame();
 	GameSelection();
 	
 
@@ -31,23 +25,37 @@ int main()
 
 void GameSelection()
 {
-	
-	string pick;
-	int num = 0;
 
-	cout << "First Which game would you like to play? Enter the number following your pick: League of Legends(0) or Call of Duty(1)?\n";
+	string pick;
+	char choice = 'A';
+
+	cout << "First, Which game would you like to play?\nEnter the letter following your pick:\nLeague of Legends(A) or Call of Duty(B)?\n";
 	cin >> pick;
-	switch (num)
+	switch (choice)
 		{
-		case 0:
-			cout << "You Picked Leauge of Legends!" << endl;
+		case 'A':
+			cout << "You Picked Leauge of Legends!\n" << endl;
+			cout << "Now that we know what game you want to play.\nIts time to pick a character!" << endl;
+			cout << "Here are your choices: " << endl;
+			break;
 			
-		case 1:
-			cout << "You Picked Call of Duty!" << endl;
+		case 'B':
+			cout << "You Picked Call of Duty!\n" << endl;
 			break;
 		default:
 			cout << "That is not a valid input" << endl;
 		}
+}
+
+void PlayGame()
+{
+	const int size = 100;
+
+	char sentence[size];
+
+
+	cout << "Hello! And WELCOME. " << endl;
+	cout << "Todays activity is simple. This will be a Chose Your Own Adventure game! " << endl;
 }
 
 // bool WantToPlayAgain()
