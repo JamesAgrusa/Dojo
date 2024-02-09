@@ -4,13 +4,13 @@
 using namespace std;
 
 
-
-char GameSelection();
 void GameIntro();
+char GameSelection();
 char CharacterSelection();
 char WeaponSelection();
 char ConsoleSelection();
 void GameOutro();
+char PlayAgain();
 
 void main()
 {
@@ -30,6 +30,7 @@ void main()
 		ConsoleSelection();
 	}
 	GameOutro();
+	PlayAgain();
 }
 
 void GameIntro()
@@ -48,15 +49,13 @@ char GameSelection()
 	{
 		cout << "You Picked Leauge of Legends!\n" << endl;
 		cout << "Now that we know what game you want to play.\nIts time to pick a character!" << endl;
-		// cout << "You have three choices for a character: \n";
-		// cout << "Ashe, Leona, or the obvious choice Taric" << endl;
+		
 	}
 	else if (choice == 'B')
 	{
 		cout << "You Picked Call of Duty!\n" << endl;
 		cout << "Now that we know what game you want to play.\nIts time to pick a weapon!" << endl;
-		// cout << "You have three choices for a weapon: \n";
-		// cout << "SMG(F), AR(G), Sniper(H)\n";
+		
 	}
 	else
 	{
@@ -92,6 +91,7 @@ char CharacterSelection()
 		cout << "you have made an invalid pick!" << endl;
 		CharacterSelection();
 	}
+	cout << "Leauge of Legends can only be played on PC!" << endl;
 	return choice;
 
 }
@@ -148,7 +148,34 @@ char ConsoleSelection()
 void GameOutro()
 {
 	cout << "Thanks for hanging out, I hope you enjoy your gaming session!" << endl;
+}
 
+char PlayAgain()
+{
+	char choice;
+	cout << "would you like to play again?" << endl;
+	cout << "Yes(Y) or No(N)" << endl;
+	cin >> choice;
+	if (choice == 'Y')
+	{
+		char choice = GameSelection();
+		if (choice == 'A')
+		{
+			CharacterSelection();
+		}
+		else
+		{
+		    WeaponSelection();
+			ConsoleSelection();
+		}
+		GameOutro();
+		PlayAgain();
+	}
+	else
+	{
+		GameOutro();
+	}
+	return choice;
 }
 
 
