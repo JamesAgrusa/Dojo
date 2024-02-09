@@ -8,8 +8,9 @@ using namespace std;
 char GameSelection();
 void GameIntro();
 char CharacterSelection();
-void WeaponSelection();
-void ConsoleSelection();
+char WeaponSelection();
+char ConsoleSelection();
+void GameOutro();
 
 void main()
 {
@@ -28,6 +29,7 @@ void main()
 		WeaponSelection();
 		ConsoleSelection();
 	}
+	GameOutro();
 }
 
 void GameIntro()
@@ -94,21 +96,58 @@ char CharacterSelection()
 
 }
 
-void WeaponSelection()
+char WeaponSelection()
 {
-	// This function is to allow the user to choose their weapon
-	// cout << "You Picked Call of Duty!\n" << endl;
-	// cout << "Now that we know what game you want to play.\nIts time to pick a weapon!" << endl;
-	// cout << "You have three choices for a weapon: \n";
-	// cout << "SMG(F), AR(G), Sniper(H)\n";
-	
-
-
+	char choice;
+	cout << "You have three choices for a weapon" << endl;
+	cout << "SMG(A), AR(B), Sniper(C)" << endl;
+	cin >> choice;
+	if (choice == 'A')
+	{
+		cout << "You have picked a SMG!" << endl;
+	}
+	else if (choice == 'B')
+	{
+		cout << "You have picked an AR" << endl;
+	}
+	else if (choice == 'C')
+	{
+		cout << "You have picked a Sniper!" << endl;
+	}
+	else
+	{
+		cout << "You have made an invalid pick!" << endl;
+		WeaponSelection();
+	}
+	return choice;
 }
 
-void ConsoleSelection()
+char ConsoleSelection()
 {
 	// this function is to allow the user to choose what console to play on if Call of Duty is picked
+	char choice;
+	cout << "Now we have made it this far, only one thing left too do!" << endl;
+	cout << "Its time to decide if you want to play Call of Duty on a PC(A), and a Playstation5(B)." << endl;
+	cin >> choice;
+	if (choice == 'A')
+	{
+		cout << "you have selected to play on a PC!" << endl;
+	}
+	else if (choice == 'B')
+	{
+		cout << "you have selected to play on a Playstation5!" << endl;
+	}
+	else
+	{
+		cout << "you have made an invalid pick!" << endl;
+		ConsoleSelection();
+	}
+	return choice;
+}
+
+void GameOutro()
+{
+	cout << "Thanks for hanging out, I hope you enjoy your gaming session!" << endl;
 
 }
 
