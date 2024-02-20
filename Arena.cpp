@@ -26,6 +26,8 @@ void Arena::runGame()
 
 void Arena::gameIntro()
 {
+    // Basic introduction to the game
+
 		cout << "Hello and welcome to the Thunderdome!!!" << endl;
 		cout << "Today we have a very special treat for you to partake in. " << endl;
 		cout << "We have the honor to witness the powerhouses of Austin and James partake in a battle" << endl;
@@ -33,11 +35,15 @@ void Arena::gameIntro()
 
 char Arena::gameStart()
 {
+    // Here user declares who they want to be. However really only one selection will run the game.
+
 	char choice;
 	cout << "Would you like to be Austin(A) or James(J)?" << endl;
 	cin >> choice;
 	if (choice == 'A')
 	{
+        // austinChoice is a void not char as it has no input/return value. 
+
 		austinChoice();
         gameStart();
 	}
@@ -66,17 +72,15 @@ char Arena::jamesChoice()
     int mhp, hp, atk, def, matk, mdef, damage, mdamage;
     atk = 10;
     def = 15;
-
     matk = 10;
     mdef = 15;
 
-
     srand(unsigned(time(0)));
-    mhp = rand() % 50 + 60;
-    hp = rand() % 20 + 80;
+    mhp = rand() % 50 + 150;
+    hp = rand() % 20 + 120;
     while (hp > 0 || mhp > 0)
     {
-        cout << "What do you want to do?\n 1 -> Heavy Attack \n 2 -> Safe Attack \n";
+        cout << "What do you want to do?\n 1 -> Bold Move \n 2 -> Safe Attack \n";
         do { cin >> choice; } while (choice > 2 || choice < 1);
         switch (choice) {
         case 1:
