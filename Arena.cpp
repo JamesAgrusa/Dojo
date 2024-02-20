@@ -39,10 +39,17 @@ char Arena::gameStart()
 	if (choice == 'A')
 	{
 		austinChoice();
+        gameStart();
 	}
 	else if (choice == 'J')
 	{
 		cout << "You have selected to be the honorable James! He is pretty goofy, but he can get it done!" << endl;
+        cout << "Let the area dome enter battle mode" << endl;
+        cout << "Austin and James take battle form...You should clear at least 5 square miles for this!" << endl;
+        cout << "1\n";
+        cout << "2\n";
+        cout << "3\n";
+        cout << "The battle starts!!!\n";
 	}
 	else
 	{
@@ -56,7 +63,7 @@ char Arena::gameStart()
 char Arena::jamesChoice()
 {
     int choice;
-    int mhp, hp, i, init, atk, def, agi, matk, mdef, magi, damage, mdamage;
+    int mhp, hp, atk, def, matk, mdef, damage, mdamage;
     atk = 10;
     def = 15;
 
@@ -65,14 +72,8 @@ char Arena::jamesChoice()
 
 
     srand(unsigned(time(0)));
-    init = rand() % 2 + 1;
     mhp = rand() % 50 + 60;
     hp = rand() % 20 + 80;
-    if (init == 1) {
-        cout << "Let the area dome enter battle mode" << endl;
-        cout << "Austin and James take battle form..." << endl;
-        cout << "The battle starts!!!\n";
-    }
     while (hp > 0 || mhp > 0)
     {
         cout << "What do you want to do?\n 1 -> Heavy Attack \n 2 -> Safe Attack \n";
