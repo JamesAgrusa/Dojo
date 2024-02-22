@@ -4,6 +4,7 @@
 #include "Battlefield.h"
 #include "Dinosaur.h"
 #include "Robot.h"
+#include "Fleet.h"
 
 using namespace std;
 
@@ -11,6 +12,7 @@ Battlefield::Battlefield()
 {
 
 }
+
 
 void Battlefield::instructions()
 {
@@ -29,6 +31,18 @@ char Battlefield::battleSeq()
 {
 	Dinosaur dino1(1, 100, 100, 100, 100);
 	Robot robo1(1, 100, 100, 100);
+	Robot robo2(1, 100, 100, 100);
+	Robot robo3(1, 100, 100, 100);
+	Fleet (fleet);
+
+	Robot* fleet[]
+	{
+		&robo1,
+		&robo2,
+		&robo3
+	};
+
+	fleet.robo1.roboHealth;
 
 	int choice;
 	
