@@ -1,0 +1,5 @@
+class Fleet
+{
+public:
+	Fleet();
+};
