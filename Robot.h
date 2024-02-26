@@ -10,7 +10,7 @@ public:
 	int roboDamage{};
 
 	// constructor
-	Robot(int roboName, int roboHealth, int dinoDef, int roboPowerLevel);
+	Robot(int roboName, int roboHealth, int roboDef, int roboPowerLevel);
 	
 	// function ( Can Do )
 	
