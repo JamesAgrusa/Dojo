@@ -29,29 +29,33 @@ void Battlefield::runGame()
 
 char Battlefield::battleSeq()
 {
+	
 	Dinosaur dino1(1, 100, 100, 100, 100);
 	Robot robo1(1, 100, 100, 100);
-	Robot robo2(1, 100, 100, 100);
-	Robot robo3(1, 100, 100, 100);
-	Fleet (fleet);
+	Fleet fleet(1, 100, 100, 100);
 
-	Robot* fleet[]
-	{
-		&robo1,
-		&robo2,
-		&robo3
-	};
+	int fleetPowerLevel{};
+	int fleetHealth{};
+	int fleetDamage{};
+	int fleetDef{};
 
-	fleet.robo1.roboHealth;
+	robo1.roboHealth = fleetHealth;
+
+	robo1.roboDamage = fleetDamage;
+
+	robo1.roboDef = fleetDef;
+
+	robo1.roboPowerLevel = fleetPowerLevel;
+
 
 	int choice;
 	
 
 	srand(unsigned(time(0)));
-	robo1.roboHealth = rand() % 75 + 100;
+	fleet.fleetHealth = rand() % 75 + 100;
 	dino1.dinoHealth = rand() % 75 + 100;
 
-	while (robo1.roboHealth > 0 || dino1.dinoHealth > 0)
+	while (fleet.fleetHealth > 0 || dino1.dinoHealth > 0)
 	{
 		
 		std::cout << "What would you like to see happen next?\n1: Attack\n2 : Heavy Attack\n";
@@ -59,12 +63,12 @@ char Battlefield::battleSeq()
 		switch (choice) 
 		{
 		case 1:
-			robo1.roboPowerLevel = rand() % 15 + 20;
-			robo1.roboDef = rand() % 13 + 26;
+			fleet.fleetPowerLevel = rand() % 15 + 20;
+			fleet.fleetDef = rand() % 13 + 26;
 			break;
 		case 2:
-			robo1.roboPowerLevel = rand() % 21 + 28;
-			robo1.roboDef = rand() % 13 + 26;
+			fleet.fleetPowerLevel = rand() % 21 + 28;
+			fleet.fleetDef = rand() % 13 + 26;
 			break;
 		}
 		
@@ -81,16 +85,16 @@ char Battlefield::battleSeq()
 			dino1.dinoDef = rand() % 13 + 26;
 			break;
 		}
-		robo1.roboDamage = dino1.dinoAttackPower - (robo1.roboDef / dino1.dinoAttackPower);
-		if (robo1.roboDamage < 0)
+		fleet.fleetDamage = dino1.dinoAttackPower - (fleet.fleetDef / dino1.dinoAttackPower);
+		if (fleet.fleetDamage < 0)
 		{
-			robo1.roboDamage = 0;
+			fleet.fleetDamage = 0;
 		}
-		robo1.roboHealth = robo1.roboHealth - robo1.roboDamage;
-		std::cout << "The Robot took " << robo1.roboDamage << " from the Dinosaur!" << endl;
+		fleet.fleetHealth = fleet.fleetHealth - fleet.fleetDamage;
+		std::cout << "The Robot took " << fleet.fleetDamage << " from the Dinosaur!" << endl;
 		
 		std::cin.get();
-		if (robo1.roboHealth < 1)
+		if (fleet.fleetHealth < 1)
 		{
 			std::cout << "the Robot has died!" << endl;
 			std::cin.get();
@@ -98,14 +102,14 @@ char Battlefield::battleSeq()
 			
 		}
 		std::cout << "The Dinosaur now has: " << dino1.dinoHealth << " HP left" << endl;
-		dino1.dinoDamage = robo1.roboPowerLevel - (dino1.dinoDef / robo1.roboPowerLevel);
+		dino1.dinoDamage = fleet.fleetPowerLevel - (dino1.dinoDef / fleet.fleetPowerLevel);
 		if (dino1.dinoDamage < 0)
 		{
 			dino1.dinoDamage = 0;
 		}
 		dino1.dinoHealth = dino1.dinoHealth - dino1.dinoDamage;
 		std::cout << "Dinosaur took: " << dino1.dinoDamage << " from the Robot" << endl;
-		std::cout << "The Robot has " << robo1.roboHealth << " HP left!" << endl;
+		std::cout << "The Robot has " << fleet.fleetHealth << " HP left!" << endl;
 		if (dino1.dinoHealth < 1)
 		{
 			std::cout << "the dinosaur died!!" << endl;
@@ -113,8 +117,6 @@ char Battlefield::battleSeq()
 			return 0;
 			
 		}
-
 	}
-	
 }
 
