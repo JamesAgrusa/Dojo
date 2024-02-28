@@ -35,16 +35,13 @@ void Battlefield::runGame()
 
 char Battlefield::battleSeq()
 {
-	
 	Fleet fleet(1, 300, 300, 300);
-	Herd herd(1, 100, 100, 100, 100);
-
+	Herd herd(1, 300, 300, 300);
 	int choice;
 
-
 	srand(unsigned(time(0)));
-	fleet.fleetHealth = rand() % 75 + 100;
-	herd.herdHealth = rand() % 75 + 100;
+	fleet.fleetHealth = 300;
+	herd.herdHealth = 300;
 
 	while (fleet.fleetHealth > 0 || herd.herdHealth > 0)
 	{
@@ -56,13 +53,14 @@ char Battlefield::battleSeq()
 		{
 		case 1:
 			fleet.fleetPowerLevel = rand() % 15 + 20;
-			fleet.fleetDef = rand() % 13 + 26;
+			fleet.fleetDef = rand() % 20 + 40;
 			break;
 		case 2:
-			fleet.fleetPowerLevel = rand() % 21 + 28;
-			fleet.fleetDef = rand() % 13 + 26;
+			fleet.fleetPowerLevel = rand() % 45 + 65;
+			fleet.fleetDef = rand() % 20 + 40;
 			break;
 		}
+			
 
 		choice = rand() % 2;
 
@@ -70,11 +68,11 @@ char Battlefield::battleSeq()
 		{
 		case 1:
 			herd.herdAttackPower = rand() % 15 + 20;
-			herd.herdDef = rand() % 13 + 26;
+			herd.herdDef = rand() % 20 + 40 ;
 			break;
 		case 2:
-			herd.herdAttackPower = rand() % 21 + 28;
-			herd.herdDef = rand() % 13 + 26;
+			herd.herdAttackPower = rand() % 45 + 65;
+			herd.herdDef = rand() % 20 + 40;
 			break;
 		}
 		fleet.fleetDamage = herd.herdAttackPower - (fleet.fleetDef / herd.herdAttackPower);
@@ -89,9 +87,15 @@ char Battlefield::battleSeq()
 		if (fleet.fleetHealth < 1)
 		{
 			std::cout << "the Fleet has died!" << endl;
-			std::cin.get();
+			std::cout << "Thanks for watching!!......INCOMING MESSAGE" << endl;
+			"\n";
+			"\n";
+			"\n";
+			"\n";
+			"\n";
+			playAgain();
 			return 0;
-
+			
 		}
 		std::cout << "The Herd now has: " << herd.herdHealth << " HP left" << endl;
 		herd.herdDamage = fleet.fleetPowerLevel - (herd.herdDef / fleet.fleetPowerLevel);
@@ -105,11 +109,36 @@ char Battlefield::battleSeq()
 		if (herd.herdHealth < 1)
 		{
 			std::cout << "the Herd died!!" << endl;
-			std::cin.get();
+			std::cout << "Thanks for watching!!......INCOMING MESSAGE" << endl;
+			"\n";
+			"\n";
+			"\n";
+			"\n";
+			"\n";
+			playAgain();
 			return 0;
-
-
 		}
+		
 	}
+	return 0;
+
 }
+
+char Battlefield::playAgain()
+{
+	char choice;
+	cout << "Would you like to play again? Yes(Y) or No(N)" << endl;
+	cin >> choice;
+	if (choice == 'Y')
+	{
+		runGame();
+	}
+	else
+	{
+		cout << "Thanks for playing!" << endl;
+	}
+	
+	return choice;
+}
+
 

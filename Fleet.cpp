@@ -2,6 +2,7 @@
 #include <list>
 #include <string>
 #include <vector>
+#include <iostream>
 #include <iterator>
 #include "Fleet.h"
 #include "Robot.h"
@@ -11,21 +12,31 @@ using namespace std;
 
 Fleet::Fleet(int fleetName, int fleetHealth, int fleetDef, int fleetPowerLevel)
 {
-	
-	Robot robo1{ 1, 100, 100, 100 };
+	Robot robo1(1, 100, 100, 100);
 	Robot robo2(2, 100, 100, 100);
 	Robot robo3(3, 100, 100, 100);
 
-	list<Robot> list_robots{ robo1, robo2, robo3 };
+	
+	int roboHealth[3];
+	roboHealth[0] = 100;
+	roboHealth[1] = 100;
+	roboHealth[2] = 100;
 
+	fleetHealth = roboHealth[0] + roboHealth[1] + roboHealth[2];
+	
+	int roboDef[3];
+	roboDef[0] = 100;
+	roboDef[1] = 100;
+	roboDef[2] = 100;
 
-	robo1.roboHealth = fleetHealth;
+	fleetDef = roboDef[0] + roboDef[1] + roboDef[2];
 
-	robo1.roboDamage = fleetDamage;
+	int roboPowerLevel[3];
+	roboPowerLevel[0] = 100;
+	roboPowerLevel[1] = 100;
+	roboPowerLevel[2] = 100;
 
-	robo1.roboDef = fleetDef;
-
-	robo1.roboPowerLevel = fleetPowerLevel;
+	fleetPowerLevel = roboPowerLevel[0] + roboPowerLevel[1] + roboPowerLevel[2];
 
 
 }

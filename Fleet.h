@@ -4,8 +4,7 @@ public:
 	
 	// Variables ( Has A )
 
-	list<Robot> list_robots;
-
+	int fleetName{};
 	int fleetPowerLevel{};
 	int fleetHealth{};
 	int fleetDamage{};

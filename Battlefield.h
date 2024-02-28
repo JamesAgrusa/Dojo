@@ -3,7 +3,7 @@ class Battlefield
 public:
 
 	// Variable ( Has A )
-
+	
 	
 	// constructor
 	Battlefield();
@@ -12,5 +12,6 @@ public:
 	void instructions();
 	void runGame();
 	char battleSeq();
+	char playAgain();
 	
 };
