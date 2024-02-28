@@ -52,12 +52,12 @@ char Battlefield::battleSeq()
 		switch (choice)
 		{
 		case 1:
-			fleet.fleetPowerLevel = rand() % 15 + 20;
-			fleet.fleetDef = rand() % 20 + 40;
+			fleet.fleetPowerLevel = rand() % 40;
+			fleet.fleetDef = 10;
 			break;
 		case 2:
-			fleet.fleetPowerLevel = rand() % 45 + 65;
-			fleet.fleetDef = rand() % 20 + 40;
+			fleet.fleetPowerLevel = rand() % 65;
+			fleet.fleetDef = 10;
 			break;
 		}
 			
@@ -67,12 +67,12 @@ char Battlefield::battleSeq()
 		switch (choice)
 		{
 		case 1:
-			herd.herdAttackPower = rand() % 15 + 20;
-			herd.herdDef = rand() % 20 + 40 ;
+			herd.herdAttackPower = rand() % 40;
+			herd.herdDef = 10;
 			break;
 		case 2:
-			herd.herdAttackPower = rand() % 45 + 65;
-			herd.herdDef = rand() % 20 + 40;
+			herd.herdAttackPower = rand() % 65;
+			herd.herdDef = 10;
 			break;
 		}
 		fleet.fleetDamage = herd.herdAttackPower - (fleet.fleetDef / herd.herdAttackPower);
@@ -81,7 +81,7 @@ char Battlefield::battleSeq()
 			fleet.fleetDamage = 0;
 		}
 		fleet.fleetHealth = fleet.fleetHealth - fleet.fleetDamage;
-		std::cout << "The Fleet took " << fleet.fleetDamage << " from the Herd!" << endl;
+		
 
 		std::cin.get();
 		if (fleet.fleetHealth < 1)
@@ -97,7 +97,8 @@ char Battlefield::battleSeq()
 			return 0;
 			
 		}
-		std::cout << "The Herd now has: " << herd.herdHealth << " HP left" << endl;
+		std::cout << "The Fleet took " << fleet.fleetDamage << " from the Herd!" << endl;
+		
 		herd.herdDamage = fleet.fleetPowerLevel - (herd.herdDef / fleet.fleetPowerLevel);
 		if (herd.herdDamage < 0)
 		{
@@ -106,6 +107,7 @@ char Battlefield::battleSeq()
 		herd.herdHealth = herd.herdHealth - herd.herdDamage;
 		std::cout << "The Herd took: " << herd.herdDamage << " from the Fleet" << endl;
 		std::cout << "The Fleet has " << fleet.fleetHealth << " HP left!" << endl;
+		std::cout << "The Herd now has: " << herd.herdHealth << " HP left" << endl;
 		if (herd.herdHealth < 1)
 		{
 			std::cout << "the Herd died!!" << endl;
