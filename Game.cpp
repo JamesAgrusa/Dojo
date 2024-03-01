@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include "Game.h"
+#include "Human.h"
+#include "Computer.h"
 
 using namespace std;
 
@@ -15,6 +17,8 @@ void Game::runGame()
 	playerSettings();
 	roundCount();
 	gamePlay();
+	gameDecision();
+	playAgain();
 	
 }
 
@@ -36,10 +40,12 @@ char Game::playerSettings()
 	if (choice == 'A' )
 	{
 		std::cout << "Hey you are lonley!! JK youre beautiful <3\n";
-		string name;
+		string Player1;
 		std::cout << "Please enter your name: ";
-		std::cin >> name;
-		getline(cin, name);
+		std::cin >> Player1;
+		std::cout << "Nice to meet you " << Player1 << " get ready to play!\n";
+		
+		
 		
 	}
 	else if (choice == 'B')
@@ -49,10 +55,11 @@ char Game::playerSettings()
 		string Player2;
 		std::cout << "Please enter the name of Player 1: ";
 		std::cin >> Player1;
-		getline(cin, Player1);
+		std::cout << "Nice to meet you " << Player1 << " lets meet your friend!\n";
 		std::cout << "Please enter the name of Player 2: ";
 		std::cin >> Player2;
-		getline(cin, Player2);
+		std::cout << "Nice to meet you " << Player2 << endl;
+		std::cout << "Now that we got the squad ready, lets play\n";
 	}
 	else
 	{
@@ -68,7 +75,7 @@ int Game::roundCount()
 	int roundCount;
 	
 
-	std::cout << "Now we need to know how many rounds it will take to win...\n";
+	std::cout << "Here we need to know how many rounds it will take to win...\n";
 	std::cout << "Round Count:  ";
 	std::cin >> roundCount;
 	victoryPoints = roundCount;
@@ -76,9 +83,42 @@ int Game::roundCount()
 	return roundCount;
 }
 
+void Game::gestureComparrison()
+{
+	Human Player1;
+	Human Player2;
+	Computer computer;
+	
+	if (Player1.gestureChoice() == 1)
+	{
+		if (Player1.gestureChoice() || computer.computerChoice() == 1)
+		{
+			std::cout << "Both players picked the same, no points awarded\n";
+		}
+	}
+	
+}
+
 void Game::gamePlay()
 {
-	std::cout << "Game Play happens here";
+	Human Player1;
+	Human Player2;
+	Computer computer;
+
+	if (playerSettings() == 'A')
+	{
+		Player1.gestureChoice();
+		computer.computerChoice();
+		gestureComparrison();
+
+	}
+	else
+	{
+		Player1.gestureChoice();
+		Player2.gestureChoice();
+		gestureComparrison();
+	}
+	
 }
 
 void Game::gameDecision()
@@ -86,6 +126,23 @@ void Game::gameDecision()
 	// where if Player 1 or Player 2 has game points that exceeds victory points
 	// this is where game over is determined 
 	// need to define game points
+}
+
+char Game::playAgain()
+{
+	char choice;
+
+	std::cout << "Would you like to play again? Yes(Y) or No(N)\n";
+	std::cin >> choice;
+	if (choice == 'Y')
+	{
+		runGame();
+	}
+	else
+	{
+		std::cout << "Thanks for playing!\n";
+	}
+	return choice;
 }
 
 

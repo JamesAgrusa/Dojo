@@ -2,8 +2,8 @@ class Game
 {
 public:
 	// Variables ( Has A )
-	int gamePoints;
-	int victoryPoints;
+	int gamePoints{};
+	int victoryPoints{};
 	
 
 	// constructor
@@ -16,5 +16,7 @@ public:
 	int roundCount();
 	void gamePlay();
 	void gameDecision();
+	void gestureComparrison();
+	char playAgain();
 
 };
