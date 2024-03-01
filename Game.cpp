@@ -45,21 +45,20 @@ char Game::playerSettings()
 		std::cin >> Player1;
 		std::cout << "Nice to meet you " << Player1 << " get ready to play!\n";
 		
-		
-		
 	}
 	else if (choice == 'B')
 	{
 		std::cout << "You have friends!!\n";
-		string Player1;
-		string Player2;
+		string Name1;
+		string Name2;
 		std::cout << "Please enter the name of Player 1: ";
-		std::cin >> Player1;
-		std::cout << "Nice to meet you " << Player1 << " lets meet your friend!\n";
+		std::cin >> Name1;
+		std::cout << "Nice to meet you " << Name1 << " lets meet your friend!\n";
 		std::cout << "Please enter the name of Player 2: ";
-		std::cin >> Player2;
-		std::cout << "Nice to meet you " << Player2 << endl;
+		std::cin >> Name2;
+		std::cout << "Nice to meet you " << Name2 << endl;
 		std::cout << "Now that we got the squad ready, lets play\n";
+		
 	}
 	else
 	{
@@ -89,13 +88,92 @@ void Game::gestureComparrison()
 	Human Player2;
 	Computer computer;
 	
+	//Rock
 	if (Player1.gestureChoice() == 1)
 	{
-		if (Player1.gestureChoice() || computer.computerChoice() == 1)
+		if (Player1.gestureChoice() == 1 || Player2.gestureChoice() == 1 || computer.computerChoice() == 1)
 		{
 			std::cout << "Both players picked the same, no points awarded\n";
 		}
+		else if (Player2.gestureChoice() == 4 || Player2.gestureChoice() == 3 || computer.computerChoice() == 4 || computer.computerChoice() == 3)
+		{
+			std::cout << "somethng happened" << "     " << "picked " << Player1.gestureChoice() << " and " << "      " << " picked " << Player2.gestureChoice() << " !" << "    " << " won that round \n" << endl;
+		}
+		else if (Player2.gestureChoice() == 2 || Player2.gestureChoice() == 5 || computer.computerChoice() == 2 || computer.computerChoice() == 5)
+		{
+			std::cout << "somethng happened" << "     " << "picked " << Player1.gestureChoice() << " and " << "      " << " picked " << Player2.gestureChoice() << " !" << "    " << " won that round \n" << endl;
+		}
+
 	}
+
+	//Paper
+	if (Player1.gestureChoice() == 2)
+	{
+		if (Player1.gestureChoice() == 2 || Player2.gestureChoice() == 2 || computer.computerChoice() == 2)
+		{
+			std::cout << "Both players picked the same, no points awarded\n";
+		}
+		else if (Player2.gestureChoice() == 1 || Player2.gestureChoice() == 5 || computer.computerChoice() == 1 || computer.computerChoice() == 5)
+		{
+
+		}
+		else if (Player2.gestureChoice() == 3 || Player2.gestureChoice() == 4 || computer.computerChoice() == 3 || computer.computerChoice() == 4)
+		{
+
+		}
+	}
+
+	//Scissors
+	if (Player1.gestureChoice() == 3)
+	{
+		if (Player1.gestureChoice() == 3 || Player2.gestureChoice() == 3 || computer.computerChoice() == 3)
+		{
+			std::cout << "Both players picked the same, no points awarded\n";
+		}
+		else if (Player2.gestureChoice() == 2 || Player2.gestureChoice() == 4 || computer.computerChoice() == 2 || computer.computerChoice() == 4)
+		{
+
+		}
+		else if (Player2.gestureChoice() == 1 || Player2.gestureChoice() == 5 || computer.computerChoice() == 1 || computer.computerChoice() == 5)
+		{
+
+		}
+	}
+
+	//Lizzard
+	if (Player1.gestureChoice() == 4)
+	{
+		if (Player1.gestureChoice() == 4 || Player2.gestureChoice() == 4 || computer.computerChoice() == 4)
+		{
+			std::cout << "Both players picked the same, no points awarded\n";
+		}
+		else if (Player2.gestureChoice() == 2 || Player2.gestureChoice() == 5 || computer.computerChoice() == 2 || computer.computerChoice() == 5)
+		{
+
+		}
+		else if (Player2.gestureChoice() == 1 || Player2.gestureChoice() == 3 || computer.computerChoice() == 1 || computer.computerChoice() == 3)
+		{
+
+		}
+	}
+
+	//Spock
+	if (Player1.gestureChoice() == 5)
+	{
+		if (Player1.gestureChoice() == 5 || Player2.gestureChoice() == 5 || computer.computerChoice() == 5)
+		{
+			std::cout << "Both players picked the same, no points awarded\n";
+		}
+		else if (Player2.gestureChoice() == 1 || Player2.gestureChoice() == 3 || computer.computerChoice() == 1 || computer.computerChoice() == 3)
+		{
+			
+		}
+		else if (Player2.gestureChoice() == 2 || Player2.gestureChoice() == 4 || computer.computerChoice() == 2 || computer.computerChoice() == 4)
+		{
+			
+		}
+	}
+	
 	
 }
 
