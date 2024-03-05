@@ -17,9 +17,9 @@ void Game::runGame()
 	playerSettings();
 	roundCount();
 	gamePlay();
-	gameDecision();
+	gameDecision();	
 	playAgain();
-	
+
 }
 
 void Game::instructions()
@@ -37,14 +37,14 @@ char Game::playerSettings()
 	std::cout << "\n";
 	std::cout << "Here we need to know if you are by yourself(A) or with someone(B)\n";
 	std::cin >> choice;
-	if (choice == 'A' )
+	if (choice == 'A')
 	{
 		std::cout << "Hey you are lonley!! JK youre beautiful <3\n";
 		string Player1;
 		std::cout << "Please enter your name: ";
 		std::cin >> Player1;
 		std::cout << "Nice to meet you " << Player1 << " get ready to play!\n";
-		
+
 	}
 	else if (choice == 'B')
 	{
@@ -58,7 +58,7 @@ char Game::playerSettings()
 		std::cin >> Name2;
 		std::cout << "Nice to meet you " << Name2 << endl;
 		std::cout << "Now that we got the squad ready, lets play\n";
-		
+
 	}
 	else
 	{
@@ -72,7 +72,7 @@ char Game::playerSettings()
 int Game::roundCount()
 {
 	int roundCount;
-	
+
 
 	std::cout << "Here we need to know how many rounds it will take to win...\n";
 	std::cout << "Round Count:  ";
@@ -80,101 +80,6 @@ int Game::roundCount()
 	victoryPoints = roundCount;
 
 	return roundCount;
-}
-
-void Game::gestureComparrison()
-{
-	Human Player1;
-	Human Player2;
-	Computer computer;
-	
-	//Rock
-	if (Player1.gestureChoice() == 1)
-	{
-		if (Player1.gestureChoice() == 1 || Player2.gestureChoice() == 1 || computer.computerChoice() == 1)
-		{
-			std::cout << "Both players picked the same, no points awarded\n";
-		}
-		else if (Player2.gestureChoice() == 4 || Player2.gestureChoice() == 3 || computer.computerChoice() == 4 || computer.computerChoice() == 3)
-		{
-			std::cout << "somethng happened" << "     " << "picked " << Player1.gestureChoice() << " and " << "      " << " picked " << Player2.gestureChoice() << " !" << "    " << " won that round \n" << endl;
-		}
-		else if (Player2.gestureChoice() == 2 || Player2.gestureChoice() == 5 || computer.computerChoice() == 2 || computer.computerChoice() == 5)
-		{
-			std::cout << "somethng happened" << "     " << "picked " << Player1.gestureChoice() << " and " << "      " << " picked " << Player2.gestureChoice() << " !" << "    " << " won that round \n" << endl;
-		}
-
-	}
-
-	//Paper
-	if (Player1.gestureChoice() == 2)
-	{
-		if (Player1.gestureChoice() == 2 || Player2.gestureChoice() == 2 || computer.computerChoice() == 2)
-		{
-			std::cout << "Both players picked the same, no points awarded\n";
-		}
-		else if (Player2.gestureChoice() == 1 || Player2.gestureChoice() == 5 || computer.computerChoice() == 1 || computer.computerChoice() == 5)
-		{
-
-		}
-		else if (Player2.gestureChoice() == 3 || Player2.gestureChoice() == 4 || computer.computerChoice() == 3 || computer.computerChoice() == 4)
-		{
-
-		}
-	}
-
-	//Scissors
-	if (Player1.gestureChoice() == 3)
-	{
-		if (Player1.gestureChoice() == 3 || Player2.gestureChoice() == 3 || computer.computerChoice() == 3)
-		{
-			std::cout << "Both players picked the same, no points awarded\n";
-		}
-		else if (Player2.gestureChoice() == 2 || Player2.gestureChoice() == 4 || computer.computerChoice() == 2 || computer.computerChoice() == 4)
-		{
-
-		}
-		else if (Player2.gestureChoice() == 1 || Player2.gestureChoice() == 5 || computer.computerChoice() == 1 || computer.computerChoice() == 5)
-		{
-
-		}
-	}
-
-	//Lizzard
-	if (Player1.gestureChoice() == 4)
-	{
-		if (Player1.gestureChoice() == 4 || Player2.gestureChoice() == 4 || computer.computerChoice() == 4)
-		{
-			std::cout << "Both players picked the same, no points awarded\n";
-		}
-		else if (Player2.gestureChoice() == 2 || Player2.gestureChoice() == 5 || computer.computerChoice() == 2 || computer.computerChoice() == 5)
-		{
-
-		}
-		else if (Player2.gestureChoice() == 1 || Player2.gestureChoice() == 3 || computer.computerChoice() == 1 || computer.computerChoice() == 3)
-		{
-
-		}
-	}
-
-	//Spock
-	if (Player1.gestureChoice() == 5)
-	{
-		if (Player1.gestureChoice() == 5 || Player2.gestureChoice() == 5 || computer.computerChoice() == 5)
-		{
-			std::cout << "Both players picked the same, no points awarded\n";
-		}
-		else if (Player2.gestureChoice() == 1 || Player2.gestureChoice() == 3 || computer.computerChoice() == 1 || computer.computerChoice() == 3)
-		{
-			
-		}
-		else if (Player2.gestureChoice() == 2 || Player2.gestureChoice() == 4 || computer.computerChoice() == 2 || computer.computerChoice() == 4)
-		{
-			
-		}
-	}
-	
-	
 }
 
 void Game::gamePlay()
@@ -185,19 +90,209 @@ void Game::gamePlay()
 
 	if (playerSettings() == 'A')
 	{
-		Player1.gestureChoice();
+		Player1.gestureChoicePlayer1();
 		computer.computerChoice();
-		gestureComparrison();
+		gestureComparrisonVsComputer();
 
 	}
 	else
 	{
-		Player1.gestureChoice();
-		Player2.gestureChoice();
-		gestureComparrison();
+		Player1.gestureChoicePlayer1();
+		Player2.gestureChoicePlayer2();
+		gestureComparrisonPlayers();
 	}
-	
+
 }
+
+void Game::gestureComparrisonPlayers()
+{
+	Human Player1;
+	Human Player2;
+
+
+	//Rock
+	if (Player1.gestureChoicePlayer1() == 1)
+	{
+		if (Player1.gestureChoicePlayer1() == 1 || Player2.gestureChoicePlayer2() == 1)
+		{
+			std::cout << "Both players picked the same, no points awarded\n";
+		}
+		else if (Player2.gestureChoicePlayer2() == 4 || Player2.gestureChoicePlayer2() == 3)
+		{
+			std::cout << "Player 1 won that round!\n";
+		}
+		else if (Player2.gestureChoicePlayer2() == 2 || Player2.gestureChoicePlayer2() == 5)
+		{
+			std::cout << "Player 2 won that round!\n";
+		}
+
+	}
+
+	//Paper
+	if (Player1.gestureChoicePlayer1() == 2)
+	{
+		if (Player1.gestureChoicePlayer1() == 2 || Player2.gestureChoicePlayer2() == 2)
+		{
+			std::cout << "Both players picked the same, no points awarded\n";
+		}
+		else if (Player2.gestureChoicePlayer2() == 1 || Player2.gestureChoicePlayer2() == 5)
+		{
+
+		}
+		else if (Player2.gestureChoicePlayer2() == 3 || Player2.gestureChoicePlayer2() == 4)
+		{
+
+		}
+	}
+
+	//Scissors
+	if (Player1.gestureChoicePlayer1() == 3)
+	{
+		if (Player1.gestureChoicePlayer1() == 3 || Player2.gestureChoicePlayer2() == 3)
+		{
+			std::cout << "Both players picked the same, no points awarded\n";
+		}
+		else if (Player2.gestureChoicePlayer2() == 2 || Player2.gestureChoicePlayer2() == 4)
+		{
+
+		}
+		else if (Player2.gestureChoicePlayer2() == 1 || Player2.gestureChoicePlayer2() == 5)
+		{
+
+		}
+	}
+
+	//Lizzard
+	if (Player1.gestureChoicePlayer1() == 4)
+	{
+		if (Player1.gestureChoicePlayer1() == 4 || Player2.gestureChoicePlayer2() == 4)
+		{
+			std::cout << "Both players picked the same, no points awarded\n";
+		}
+		else if (Player2.gestureChoicePlayer2() == 2 || Player2.gestureChoicePlayer2() == 5)
+		{
+
+		}
+		else if (Player2.gestureChoicePlayer2() == 1 || Player2.gestureChoicePlayer2() == 3)
+		{
+
+		}
+	}
+
+	//Spock
+	if (Player1.gestureChoicePlayer1() == 5)
+	{
+		if (Player1.gestureChoicePlayer1() == 5 || Player2.gestureChoicePlayer2() == 5)
+		{
+			std::cout << "Both players picked the same, no points awarded\n";
+		}
+		else if (Player2.gestureChoicePlayer2() == 1 || Player2.gestureChoicePlayer2() == 3)
+		{
+
+		}
+		else if (Player2.gestureChoicePlayer2() == 2 || Player2.gestureChoicePlayer2() == 4)
+		{
+
+		}
+	}
+
+
+}
+
+void Game::gestureComparrisonVsComputer()
+{
+	Human Player1;
+	Computer computer;
+
+
+	//Rock
+	if (Player1.gestureChoicePlayer1() == 1)
+	{
+		if (Player1.gestureChoicePlayer1() == 1 || computer.computerChoice() == 1)
+		{
+			std::cout << "Both players picked the same, no points awarded\n";
+		}
+		else if (computer.computerChoice() == 4 || computer.computerChoice() == 3)
+		{
+			std::cout << "The Player won this round!!\n";
+		}
+		else if (computer.computerChoice() == 2 || computer.computerChoice() == 5)
+		{
+			std::cout << "The computer won this round!\n";
+		}
+
+	}
+
+	//Paper
+	if (Player1.gestureChoicePlayer1() == 2)
+	{
+		if (Player1.gestureChoicePlayer1() == 2 || computer.computerChoice() == 2)
+		{
+			std::cout << "Both players picked the same, no points awarded\n";
+		}
+		else if (computer.computerChoice() == 1 || computer.computerChoice() == 5)
+		{
+			std::cout << "The Player won this round!!\n";
+		}
+		else if (computer.computerChoice() == 3 || computer.computerChoice() == 4)
+		{
+			std::cout << "The computer won this round!\n";
+		}
+	}
+
+	//Scissors
+	if (Player1.gestureChoicePlayer1() == 3)
+	{
+		if (Player1.gestureChoicePlayer1() == 3 || computer.computerChoice() == 3)
+		{
+			std::cout << "Both players picked the same, no points awarded\n";
+		}
+		else if (computer.computerChoice() == 2 || computer.computerChoice() == 4)
+		{
+			std::cout << "The Player won this round!!\n";
+		}
+		else if (computer.computerChoice() == 1 || computer.computerChoice() == 5)
+		{
+			std::cout << "The computer won this round!\n";
+		}
+	}
+
+	//Lizzard
+	if (Player1.gestureChoicePlayer1() == 4)
+	{
+		if (Player1.gestureChoicePlayer1() == 4 || computer.computerChoice() == 4)
+		{
+			std::cout << "Both players picked the same, no points awarded\n";
+		}
+		else if (computer.computerChoice() == 2 || computer.computerChoice() == 5)
+		{
+			std::cout << "The Player won this round!!\n";
+		}
+		else if (computer.computerChoice() == 1 || computer.computerChoice() == 3)
+		{
+			std::cout << "The computer won this round!\n";
+		}
+	}
+
+	//Spock
+	if (Player1.gestureChoicePlayer1() == 5)
+	{
+		if (Player1.gestureChoicePlayer1() == 5 || computer.computerChoice() == 5)
+		{
+			std::cout << "Both players picked the same, no points awarded\n";
+		}
+		else if (computer.computerChoice() == 1 || computer.computerChoice() == 3)
+		{
+			std::cout << "The Player won this round!!\n";
+		}
+		else if (computer.computerChoice() == 2 || computer.computerChoice() == 4)
+		{
+			std::cout << "The computer won this round!\n";
+		}
+	}
+}
+
+
 
 void Game::gameDecision()
 {
