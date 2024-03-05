@@ -1,9 +1,9 @@
 class Human
 {
 public:
-	
+
 	// Variables ( Has A )
-	
+
 
 
 	// constructor
@@ -12,6 +12,9 @@ public:
 
 	// functions ( Can Do )
 
-	int gestureChoice();
-	
+	int gestureChoicePlayer1();
+	int gestureChoicePlayer2();
+
+
+
 };

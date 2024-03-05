@@ -4,7 +4,7 @@ public:
 	// Variables ( Has A )
 	int gamePoints{};
 	int victoryPoints{};
-	
+
 
 	// constructor
 	Game();
@@ -16,7 +16,8 @@ public:
 	int roundCount();
 	void gamePlay();
 	void gameDecision();
-	void gestureComparrison();
+	void gestureComparrisonPlayers();
+	void gestureComparrisonVsComputer();
 	char playAgain();
 
 };
