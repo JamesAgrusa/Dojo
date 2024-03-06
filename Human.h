@@ -3,7 +3,8 @@ class Human
 public:
 
 	// Variables ( Has A )
-
+	int gamePoints{};
+	int vitoryPoints{};
 
 
 	// constructor
