@@ -64,13 +64,13 @@ char Game::gamePlayComputer()
 	int victoryPoints = rand() % 3;
 	
 
-	string rps[] = { "rock", "paper", "scissors" };
+	string rps[] = { "rock", "paper", "scissors", "lizzard", "spock" };
 
 	srand((unsigned int)time(NULL));
 
 	while (true)
 	{
-		cout << "Enter rock, paper, or scissors:" << endl;
+		cout << "Enter rock, paper, scissors, lizzard or spock:" << endl;
 		getline(cin, player);
 		cout << "Player chooses: " << player << endl;
 		
@@ -84,18 +84,28 @@ char Game::gamePlayComputer()
 		}
 		else if (player == "rock")
 		{
-			if (computer == "scissors") playerScore++;
-			else if (computer == "paper") computerScore++;
+			if (computer == "scissors" || computer == "lizzard") playerScore++;
+			else if (computer == "paper" || computer == "spock") computerScore++;
 		}
 		else if (player == "paper")
 		{
-			if (computer == "rock") playerScore++;
-			else if (computer == "scissors") computerScore++;
+			if (computer == "rock" || computer == "lizzard") playerScore++;
+			else if (computer == "scissors" || computer == "spock") computerScore++;
 		}
 		else if (player == "scissors")
 		{
-			if (computer == "paper") playerScore++;
-			else if (computer == "rock") computerScore++;
+			if (computer == "paper" || computer == "lizzard") playerScore++;
+			else if (computer == "rock" || computer == "spock") computerScore++;
+		}
+		else if (player == "lizzard")
+		{
+			if (computer == "spock" || computer == "paper") playerScore++;
+			else if (computer == "scissors" || computer == "rock") computerScore++;
+		}
+		else if (player == "spock")
+		{
+			if (computer == "scissors" || computer == "rock") playerScore++;
+			else if (computer == "lizzard" || computer == "paper") computerScore++;
 		}
 		cout << "Player: " << playerScore << " Computer: " << computerScore << endl;
 		if (playerScore == victoryPoints)
@@ -122,7 +132,7 @@ char Game::gamePlayPeople()
 	int victoryPoints = rand() % 3;
 	
 
-	string rps[] = { "rock", "paper", "scissors" };
+	string rps[] = { "rock", "paper", "scissors", "lizzard", "spock"};
 
 	srand((unsigned int)time(NULL));
 
@@ -144,18 +154,28 @@ char Game::gamePlayPeople()
 		}
 		else if (player1 == "rock")
 		{
-			if (player2 == "scissors") player1Score++;
-			else if (player2 == "paper") player2Score++;
+			if (player2 == "scissors" || player2 == "lizzard") player1Score++;
+			else if (player2 == "paper" || player2 == "spock") player2Score++;
 		}
 		else if (player1 == "paper")
 		{
-			if (player2 == "rock") player1Score++;
-			else if (player2 == "scissors") player2Score++;
+			if (player2 == "rock" || player2 == "lizzard") player1Score++;
+			else if (player2 == "scissors" || player2 == "spock") player2Score++;
 		}
 		else if (player1 == "scissors")
 		{
-			if (player2 == "paper") player1Score++;
-			else if (player2 == "rock") player2Score++;
+			if (player2 == "paper" || player2 == "lizzard") player1Score++;
+			else if (player2 == "rock" || player2 == "spock") player2Score++;
+		}
+		else if (player1 == "lizzard")
+		{
+			if (player2 == "spock" || player2 == "paper") player1Score++;
+			else if (player2 == "rock" || player2 == "scissors") player2Score++;
+		}
+		else if (player1 == "spock")
+		{
+			if (player2 == "rock" || player2 == "scissors") player1Score++;
+			else if (player2 == "lizzard" || player2 == "paper") player2Score++;
 		}
 		cout << "Player 1: " << player1Score << " Player 2: " << player2Score << endl;
 		if (player1Score == victoryPoints)

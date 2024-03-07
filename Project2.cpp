@@ -8,8 +8,8 @@ using namespace std;
 
 int main()
 {
-	Game game;
+	Game RPSLS;
 
-	game.runGame();
+	RPSLS.runGame();
 
 }
