@@ -18,9 +18,12 @@ void Game::instructions()
 	cout << "" << endl;
 	cout << "" << endl;
 	cout << "Here are the rules to get you up to speed :D\n";
-	cout << "\n";
+	cout << "" << endl;
+	cout << "" << endl;
 	cout << "    Rock crushes Scisssors\n    Scissors cuts Paper\n    Paper covers Rock\n    Rock curshes LIzard\n    Lizard poisons Spock\n    Spck smashes Scissors\n    Scissors decapitates LIzard\n";
 	cout << "    Lizard eats Paper\n    Paper disproves Spock\n    Spock vaporizes Rock\n";
+	cout << "" << endl;
+	cout << "" << endl;
 	cout << "This game will be decided on a 'Best of three' rounds!" << endl;
 }
 
